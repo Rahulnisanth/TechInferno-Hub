@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1>
+      This is the products page !!!
+</h1>
+<table border="1">
+      <tr>
+            <th>title</th>
+            <th>description</th>
+            <th>demo_link</th>
+            <th>source_link</th>
+            <th>tags</th>
+            <th>vote_total</th>
+            <th>vote_ratio</th>
+            <th>view</th>
+      </tr>
+      {% for project in projects %}
+      <tr>
+            <td>{{project.title}}</td>
+            <td>{{project.description}}</td>
+            <td>{{project.demo_link}}</td>
+            <td>{{project.source_link}}</td>
+            <td>{{project.tags}}</td>
+            <td>{{project.vote_total}}</td>
+            <td>{{project.vote_ratio}}</td>
+            <td><a href="{% url 'single-project' project.id %}">View</a></td>
+      </tr>
+      {% endfor %}
+</table>
+
+{% endblock content %}

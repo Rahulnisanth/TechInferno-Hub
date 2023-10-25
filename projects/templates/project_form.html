@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1> Project Form</h1>
+<form method="POST">
+      {% csrf_token %}
+      <input type="Submit">
+</form>
+{% endblock content %}
