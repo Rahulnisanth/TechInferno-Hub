@@ -2,6 +2,7 @@
 venv
 db.sqlite3
 manage.py
+media
 projects/__pycache__
 projects/migrations
 projects/__init__.py
