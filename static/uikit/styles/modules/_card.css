@@ -19,7 +19,8 @@
 
 .card__body,
 .card__header {
-  padding: 2rem 2.5rem;
+  padding: .7rem 2.5rem;
+  margin-top: -5px !important;
 }
 
 .card__header {

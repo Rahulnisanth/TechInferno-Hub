@@ -14,4 +14,4 @@ class ProjectForm(ModelForm):
             super(ProjectForm, self).__init__(*args, **kwargs)
 
             for name, field in self.fields.items():
-                  field.widget.attrs.update({'class':'input','placeholder':f"Add the projects's {name} here"})
+                  field.widget.attrs.update({'class':'input','placeholder':f"Add projects's {name} here"})

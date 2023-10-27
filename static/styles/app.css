@@ -42,7 +42,9 @@ img {
 }
 
 .header__logo>img {
-  height: 3.8rem;
+  position: relative;
+  top: 8px;
+  height: 4rem;
 }
 
 .header__nav>ul {
@@ -453,8 +455,8 @@ img {
 
 .singleProject__preview {
   height: 50vh;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
   margin-bottom: 3rem;
   border-radius: 0.7rem;
 }
@@ -523,8 +525,8 @@ img {
 .project__thumbnail {
   height: 23rem;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: top center;
 }
 
 .project__title {
