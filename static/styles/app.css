@@ -523,9 +523,8 @@ img {
 }
 
 .project__thumbnail {
-  height: 23rem;
+  min-height: 22rem;
   width: 100%;
-  object-fit: contain;
   object-position: top center;
 }
 
