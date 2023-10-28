@@ -364,6 +364,7 @@ img {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  font-size: 25px;
 }
 
 .devInfo {
@@ -479,7 +480,7 @@ img {
 }
 
 .project--rating {
-  margin-bottom: 1.6em;
+  margin-bottom: 1.5em;
   margin-top: .5em;
 }
 
@@ -495,7 +496,6 @@ img {
   Projects Page
 ========================*/
 .projects>.hero-section {
-  background: var(--color-sub-lighter);
   height: 30vh;
 }
 
@@ -504,12 +504,12 @@ img {
 }
 
 .projects .hero-section__box>h2 {
-  color: var(--color-sub);
+  color: var(--color-sub-lighter);
 }
 
 .projects .hero-section__box>h2>span {
   font-weight: 700;
-  color: var(--color-sub);
+  color: var(--color-sub-lighter);
 }
 
 .projectsList {

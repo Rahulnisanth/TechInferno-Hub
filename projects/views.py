@@ -2,17 +2,21 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 
 def projects(request):
       projects = Project.objects.all()
       context = {'projects' : projects}
       return render(request, 'projects.html', context)
 
+@login_required(login_url='login_user')
 def singleProject(request, pk):
       projectObj = Project.objects.get(id=pk)
       context = {'project' : projectObj }
       return render(request, 'single-project.html', context)
 
+@login_required(login_url='login_user')
 def createProject(request):
       project_form = ProjectForm()
       if request.method == 'POST':

@@ -14,6 +14,7 @@
           </span>
           {% endfor %}
         </div>
+
         {% if project.source_link %}
         <a class="singleProject__liveLink" href="{{project.source_link}}" target="_blank"><i
             class="fa-solid fa-code-branch"></i>Source Code
@@ -28,8 +29,11 @@
       </div>
       <div class="column column--2of3">
         <img class="singleProject__preview" src="{{project.featured_image.url}}" alt="portfolio thumbnail" />
-        <a href="profile.html" class="singleProject__developer">By {{project.owner}}</a>
+        <a href="{% url 'single-profile' project.owner.id %}" class="singleProject__developer"> Hosted by <i
+            class="fa-solid fa-quote-left"></i>
+          {{project.owner}}</a>
         <h2 class="singleProject__title">{{project.title}}</h2>
+
         <h3 class="singleProject__subtitle">About the Project</h3>
         <div class="singleProject__info">
           {{project.description}}
