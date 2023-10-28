@@ -1,61 +1,60 @@
-<!DOCTYPE html>
+{% extends 'index.html' %}
 {% load static %}
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="{% static 'images/cloud_caster.png' %}" type="image/x-icon" />
-  <!-- Font Awesome icons -->
-  <script src="https://kit.fontawesome.com/14e8c0ae6a.js" crossorigin="anonymous"></script>
-  <!-- Mumble UI -->
-  <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
-  <!-- Dev Search UI -->
-  <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
-
-  <title>ProjectCaster - Authentication</title>
-</head>
-
-<body>
-  <div class="auth">
-    <div class="card">
-      <div class="auth__header text-center">
-        <a href="/">
-          <img src="{% static 'images/cloud_caster.png' %}" alt="icon" style="width: 70px;" />
-        </a>
-        <h3>Account Login</h3>
-        <p>Hello Developer, Welcome Back!</p>
-      </div>
-
-      <form action="" class="form auth__form" method="POST">
-        {% csrf_token %}
-        <!-- Input:Email -->
-        <div class="form__field">
-          <label for="formInput#text">Username: </label>
-          <input class="input input--text" id="formInput#text" type="text" name="username"
-            placeholder="Enter your username..." />
-        </div>
-
-        <!-- Input:Password -->
-        <div class="form__field">
-          <label for="formInput#password">Password: </label>
-          <input class="input input--password" id="formInput#passowrd" type="password" name="password"
-            placeholder="••••••••" />
-        </div>
-        <div class="auth__actions">
-          <!-- Login button -->
-          <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
-          <a href="forgetpassword.html">Forget Password?</a>
-        </div>
-      </form>
-      <div class="auth__alternative">
-        <p>Don’t have an Account?</p>
-        <a href="signup.html">Sign Up</a>
-      </div>
+{% block content %}
+{% if flag == 'register' %}
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/cloud_caster.png' %}" alt="icon" style="width: 70px;" />
+      </a>
+      <h3>Register Account</h3>
+      <p>Hello Developer, Welcome !</p>
+    </div>
+    <!-- Form Template ================================================= -->
+    <div class="auth__alternative">
+      <p>Already have an Account?</p>
+      <a href="{% url 'login_user' %}">Login</a>
     </div>
   </div>
-</body>
+</div>
+{% else %} <!-- Else condition ============================================= -->
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/cloud_caster.png' %}" alt="icon" style="width: 70px;" />
+      </a>
+      <h3>Account Login</h3>
+      <p>Hello Developer, Welcome Back!</p>
+    </div>
+    <form action="" class="form auth__form" method="POST">
+      {% csrf_token %}
+      <!-- Input:Email -->
+      <div class="form__field">
+        <label for="formInput#text">Username: </label>
+        <input class="input input--text" id="formInput#text" type="text" name="username"
+          placeholder="Enter your username..." />
+      </div>
+      <!-- Input:Password -->
+      <div class="form__field">
+        <label for="formInput#password">Password: </label>
+        <input class="input input--password" id="formInput#passowrd" type="password" name="password"
+          placeholder="••••••••" />
+      </div>
+      <div class="auth__actions">
+        <!-- Login button -->
+        <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
+        <a href="forgetpassword.html">Forget Password?</a>
+      </div>
+    </form>
+    <div class="auth__alternative">
+      <p>Don’t have an Account?</p>
+      <a href="{% url 'register_user' %}">Sign Up</a>
+    </div>
+  </div>
+</div>
 
-</html>
+{% endif %}
+
+{% endblock content %}

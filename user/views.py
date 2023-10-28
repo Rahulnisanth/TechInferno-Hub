@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 
 def login_user(request):
+      flag = 'login'
       if request.user.is_authenticated:
             return redirect('/')
       if request.method == 'POST':
@@ -23,6 +25,11 @@ def login_user(request):
 def logout_user(request):
       logout(request)
       return redirect('/')
+
+def registerUser(request):
+      flag = 'register'
+      context = {'flag' : flag}
+      return render(request, 'login.html', context)
 
 
 def profiles(request):  
