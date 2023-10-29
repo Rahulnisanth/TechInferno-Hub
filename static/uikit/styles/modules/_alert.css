@@ -1,9 +1,10 @@
 .message___box {
   display: flex;
+  background-color: var(--color-sub);
+  position: fixed;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: fit-content;
 }
 
 .alert {

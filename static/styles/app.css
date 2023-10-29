@@ -1,5 +1,6 @@
 :root {
-  --color-sub: #2d2d39;
+  --color-sub: #6f6fa5;
+  --color-main: #50509f;
 }
 
 .btn--sub {
@@ -833,7 +834,7 @@ img {
 }
 
 .backButton {
-  background: var(--color-main-light);
+  background: #dedede;
   color: var(--color-main);
   width: 4rem;
   height: 4rem;
@@ -841,6 +842,7 @@ img {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  padding: 3px 4px 0 0 !important;
 }
 
 .backButton i {

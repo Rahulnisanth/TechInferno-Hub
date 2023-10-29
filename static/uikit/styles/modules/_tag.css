@@ -19,11 +19,11 @@
   margin-bottom: 0.75rem;
 }
 
-.tag > small {
+.tag>small {
   color: var(--color-white);
 }
 
-.tag--outline > small {
+.tag--outline>small {
   color: var(--color-sub);
 }
 
@@ -38,14 +38,14 @@
 }
 
 .tag--main,
-.tag--main > small {
-  background: var(--color-main-light);
-  color: var(--color-main);
+.tag--main>small {
+  background: #dedede;
+  color: var(--color-sub-light);
   font-weight: 500;
 }
 
 .tag--sub,
-.tag--sub > small {
+.tag--sub>small {
   background: var(--color-sub-lighter);
   color: var(--color-sub-light);
   font-weight: 500;

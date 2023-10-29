@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from projects.utils import SearchProjects
+from projects.utils import SearchProjects, paginateProjects
 from .models import *
 from .forms import *
 from django.http import HttpResponse
@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 def projects(request):
       projects, search_query = SearchProjects(request)
-      context = {'projects' : projects, 'search_query' : search_query}
+      custom_range, projects = paginateProjects(request, projects, 9)
+      context = {'projects' : projects, 'search_query' : search_query, 'custom_range' : custom_range}
       return render(request, 'projects.html', context)
 
 @login_required(login_url='login_user')
