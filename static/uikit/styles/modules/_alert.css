@@ -1,3 +1,11 @@
+.message--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+}
+
 .alert {
   display: inline-flex;
   gap: 3rem;
@@ -6,12 +14,11 @@
   padding: 1.5rem 2.5rem;
   border-radius: 3px;
   border: 1px solid var(--color-white-light);
-  margin-bottom: 1rem;
   margin-right: 1rem;
 }
 
 .alert,
-.alert > .alert__message {
+.alert>.alert__message {
   background-color: var(--color-main-light);
   color: var(--color-main);
   font-size: 1.4rem;
@@ -19,18 +26,18 @@
 }
 
 .alert.alert--error,
-.alert.alert--error > .alert__message {
+.alert.alert--error>.alert__message {
   background-color: var(--color-error-bg);
   color: var(--color-error);
 }
 
 .alert.alert--success,
-.alert.alert--success > .alert__message {
+.alert.alert--success>.alert__message {
   background-color: var(--color-success-bg);
   color: var(--color-success);
 }
 
-.alert > .alert__close {
+.alert>.alert__close {
   background: transparent;
   cursor: pointer;
   border: none;
@@ -39,6 +46,6 @@
   transition: var(--generic-transition);
 }
 
-.alert > .alert__close:hover {
+.alert>.alert__close:hover {
   opacity: 0.85;
 }

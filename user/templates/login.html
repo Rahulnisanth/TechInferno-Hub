@@ -1,9 +1,9 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% if flag == 'register' %}
 <div class="auth">
-  <div class="card">
+  {% if flag == 'register' %}
+  <div class="card" style="margin:60px 0 60px 0;">
     <div class="auth__header text-center">
       <a href="/">
         <img src="{% static 'images/cloud_caster.png' %}" alt="icon" style="width: 70px;" />
@@ -12,14 +12,28 @@
       <p>Hello Developer, Welcome !</p>
     </div>
     <!-- Form Template ================================================= -->
+    <form method="POST" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form__field">
+        <label for="formInput#text">{{field.label}}</label>
+        {{field}}
+        {% if field.errors %}
+        {% for error in field.errors %}
+        <small style="color: red;">{{error}}</small>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endfor %}
+      <input style="margin: 1em 0 1.5em 0;" class="btn btn--sub btn--lg" type="submit" value="Register" />
+    </form>
+    <!-- Form Template End -->
     <div class="auth__alternative">
       <p>Already have an Account?</p>
-      <a href="{% url 'login_user' %}">Login</a>
+      <a href="{% url 'login_user' %}">Login here!</a>
     </div>
   </div>
-</div>
-{% else %} <!-- Else condition ============================================= -->
-<div class="auth">
+  {% else %} <!-- Else condition ============================================= -->
   <div class="card">
     <div class="auth__header text-center">
       <a href="/">
@@ -50,11 +64,10 @@
     </form>
     <div class="auth__alternative">
       <p>Don’t have an Account?</p>
-      <a href="{% url 'register_user' %}">Sign Up</a>
+      <a href="{% url 'register_user' %}">Register here!</a>
     </div>
   </div>
+  {% endif %}
 </div>
-
-{% endif %}
 
 {% endblock content %}
