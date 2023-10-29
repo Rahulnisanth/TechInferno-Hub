@@ -559,9 +559,16 @@ img {
 }
 
 .comment {
+  align-items: center;
+  justify-content: center;
   display: flex;
   gap: 2rem;
 }
+
+.comment a {
+  padding: 10px 0 0 0;
+}
+
 
 .comment:not(:last-child) {
   margin-bottom: 3rem;
