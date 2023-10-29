@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from projects.utils import SearchProjects
 from .models import *
 from .forms import *
 from django.http import HttpResponse
@@ -6,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def projects(request):
-      projects = Project.objects.all()
-      context = {'projects' : projects}
+      projects, search_query = SearchProjects(request)
+      context = {'projects' : projects, 'search_query' : search_query}
       return render(request, 'projects.html', context)
 
 @login_required(login_url='login_user')

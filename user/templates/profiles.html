@@ -10,13 +10,14 @@
                   </div>
 
                   <div class="hero-section__search">
-                        <form class="form" action="#" method="get">
+                        <form class="form" action="" method="GET">
+                              {% csrf_token %}
                               <div class="form__field">
                                     <label for="formInput#search">Search Developers </label>
-                                    <input class="input input--text" id="formInput#search" type="text" name="text"
+                                    <input class="input input--text" id="formInput#search" type="text"
+                                          name="search_query" value="{{search_query}}"
                                           placeholder="Search for developers" />
                               </div>
-
                               <input class="btn btn--sub btn--lg" type="submit" value="Search" />
                         </form>
                   </div>

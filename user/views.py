@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from .utils import SearchProfiles
 
 def login_user(request):
       flag = 'login'
@@ -46,8 +46,8 @@ def registerUser(request):
 
 
 def profiles(request):  
-      profiles = Profile.objects.all()
-      context = {'profiles' : profiles}
+      profiles, search_query = SearchProfiles(request)
+      context = {'profiles' : profiles, 'search_query': search_query}
       return render(request, 'profiles.html', context)
 
 @login_required(login_url='login_user')
