@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Profile
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-from .forms import CustomUserCreationForm, ProfileForm, SkillForm
+from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .utils import SearchProfiles, paginateProfiles
@@ -117,3 +117,43 @@ def deleteSkill(request, pk):
             return redirect('user-profile')
       context = {'skill' : skill}
       return render(request, 'delete-skill.html', context)
+
+
+@login_required(login_url='login_user')
+def inbox(request):
+      profile = request.user.profile
+      texts = profile.messages.all()
+      unreadCount = texts.filter(is_read=False).count()
+      context = {'texts':texts, 'unreadCount': unreadCount}
+      return render(request, 'inbox.html', context)
+
+
+def messageInbox(request, pk):
+      text = Message.objects.get(id=pk)
+      context = {'text':text}
+      return render(request, 'message.html', context)
+
+
+def messageForm(request, pk):
+      receiver = Profile.objects.get(id=pk)
+      form = MessageForm()
+      try:
+            sender = request.user.profile
+      except:
+            sender = None
+
+      if request.method == 'POST':
+            form = MessageForm(request.POST)
+            if form.is_valid():
+                  text = form.save(commit=False)
+                  text.sender = sender
+                  text.receiver = receiver
+
+                  if sender:
+                        text.name = sender.username
+                  text.save()
+                  messages.success(request, 'Message sent successfully')
+                  return redirect('single-profile', pk=receiver.id)
+            
+      context = {'form':form}
+      return render(request, 'message_form.html', context)

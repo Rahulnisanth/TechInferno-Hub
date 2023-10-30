@@ -47,7 +47,6 @@
                                           </li>
                                           {% endif %}
                                     </ul>
-                                    <a href="#" class="btn btn--sub btn--lg">Send Message </a>
                               </div>
                         </div>
                   </div>
@@ -58,7 +57,7 @@
                                     <i class="fa-solid fa-quote-left"></i> {{profile.short_intro}}
                                     <br />
                                     <br />
-                                    {{profile.bio}}
+                                    {{profile.bio|linebreaksbr}}
                               </p>
                         </div>
                         <div class="settings">
