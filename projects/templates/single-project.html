@@ -43,16 +43,25 @@
           <h5 class="project--rating">
             {{project.vote_total}} Endorsements
           </h5>
-
+          <!-- REVIEW-SECTION -->
+          {% if request.user.profile.id in project.reviewers %}
+          <p class="devote__text">You have already voted your review for this project</p>
+          {% elif request.user.profile == project.owner %}
+          <p class="devote__text">You cannot vote for your own projects</p>
+          {% else %}
           <form class="form" action="" method="POST">
+            {% csrf_token %}
             <!-- Textarea -->
             <div class="form__field">
-              <label for="formInput#textarea">Comments: </label>
-              <textarea class="input input--textarea" name="message" id="formInput#textarea"
-                placeholder="Write your comments here..."></textarea>
+              {% for field in form %}
+              <label for="formInput#text">{{field.label}} </label>
+              {{field}}
+              {% endfor %}
             </div>
             <input class="btn btn--sub btn--lg" type="submit" value="Comment" />
           </form>
+          {% endif %}
+          <!-- END ==== REVIEW-SECTION -->
           {% if project.review_set %}
           <div class="commentList">
             {% for review in project.review_set.all %}

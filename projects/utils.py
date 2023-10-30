@@ -33,6 +33,7 @@ def SearchProjects(request):
       tags = Tag.objects.filter(name__icontains=search_query)
       projects = Project.objects.distinct().filter(
             Q(title__icontains=search_query) | 
+            Q(domain__icontains=search_query) | 
             Q(description__icontains=search_query) | 
             Q(owner__username__icontains=search_query) |
             Q(tags__in=tags)

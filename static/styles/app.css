@@ -541,7 +541,16 @@ img {
   text-align: justify;
 }
 
+.project__tags {
+  margin-top: -10px;
+}
+
 /*========== Comments ==========*/
+
+.devote__text {
+  color: var(--color-main);
+  font-size: 25px;
+}
 
 .comments {
   margin-top: 4rem;
@@ -550,8 +559,8 @@ img {
 }
 
 .comments .form label {
-  position: absolute;
-  margin: -9999px;
+  font-size: 18px;
+  padding-top: 15px !important;
 }
 
 .commentList {
@@ -560,7 +569,6 @@ img {
 
 .comment {
   align-items: center;
-  justify-content: center;
   display: flex;
   gap: 2rem;
 }

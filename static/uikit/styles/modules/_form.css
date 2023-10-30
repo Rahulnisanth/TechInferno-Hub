@@ -19,7 +19,7 @@
 }
 
 .form__label,
-.form__field > label {
+.form__field>label {
   display: block;
   margin-bottom: 0.5rem;
   color: var(--color-text);
@@ -61,8 +61,13 @@ input.input[type='number']:active,
 select.input,
 textarea.input:focus,
 textarea.input:active {
-  outline: none;
-  border: 2px solid var(--color-main);
+  min-width: 24rem;
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-light);
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-bg);
 }
 
 .form__field--radio,
@@ -79,8 +84,8 @@ textarea.input:active {
   color: var(--color-text);
 }
 
-.form__field--radio input + label,
-.form__field--checkbox input + label {
+.form__field--radio input+label,
+.form__field--checkbox input+label {
   display: inline-block;
   margin-left: 1.5rem;
   margin-right: 2rem;
@@ -177,6 +182,6 @@ textarea.input:active {
   background: var(--color-main-light);
 }
 
-.form__field--action > *:not(:last-child) {
+.form__field--action>*:not(:last-child) {
   margin-right: 1rem;
 }
