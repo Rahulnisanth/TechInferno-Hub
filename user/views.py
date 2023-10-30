@@ -130,6 +130,9 @@ def inbox(request):
 
 def messageInbox(request, pk):
       text = Message.objects.get(id=pk)
+      if text.is_read == False:
+            text.is_read = True
+            text.save()
       context = {'text':text}
       return render(request, 'message.html', context)
 
