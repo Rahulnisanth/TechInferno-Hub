@@ -6,7 +6,7 @@
   <div class="card" style="margin:60px 0 60px 0;">
     <div class="auth__header text-center">
       <a href="/">
-        <img src="{% static 'images/cloud_caster.png' %}" alt="icon" style="width: 70px;" />
+        <img src="{% static 'images/cloud_big.png' %}" alt="icon" style="width: 70px;" />
       </a>
       <h3>Register Account</h3>
       <p>Hello Developer, Welcome !</p>
@@ -37,7 +37,7 @@
   <div class="card">
     <div class="auth__header text-center">
       <a href="/">
-        <img src="{% static 'images/cloud_caster.png' %}" alt="icon" style="width: 70px;" />
+        <img src="{% static 'images/cloud_big.png' %}" alt="icon" style="width: 70px;" />
       </a>
       <h3>Account Login</h3>
       <p>Hello Developer, Welcome Back!</p>
@@ -59,7 +59,7 @@
       <div class="auth__actions">
         <!-- Login button -->
         <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
-        <a href="forgetpassword.html">Forget Password?</a>
+        <a href="{% url 'reset_password' %}">Forget Password?</a>
       </div>
     </form>
     <div class="auth__alternative">

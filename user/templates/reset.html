@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<style>
+      .card {
+            margin-top: -50px;
+      }
+
+      input[type='text'],
+      input[type='password'] {
+            min-width: 24rem;
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid var(--color-light);
+            transition: all 0.3s ease-in-out;
+            background-color: var(--color-bg);
+      }
+
+      input[type='text']:focus,
+      input[type='password']:focus,
+      input[type='text']:active,
+      input[type='password']:active {
+            min-width: 24rem;
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-sub);
+            outline: 1px solid var(--color-sub);
+            transition: all 0.3s ease-in-out;
+            background-color: var(--color-bg);
+      }
+</style>
+
+<div class="auth">
+      <div class="card">
+            <div class="auth__header text-center">
+                  <h3>Enter new password</h3>
+                  <p>Please enter the new password twice so we can verify that you have typed it correctly</p>
+            </div>
+            <form action="" class="form auth__form" method="POST">
+                  {% csrf_token %}
+                  <!-- Input:Text -->
+                  {% for field in form %}
+                  <div class="form__field">
+                        <label for="formInput#text">{{field.label}}</label>
+                        {{field}}
+                  </div>
+                  {% endfor %}
+
+                  <input class="btn btn--sub btn--lg  my-md" type="submit" value="Change my password" />
+            </form>
+      </div>
+</div>
+{% endblock content %}
