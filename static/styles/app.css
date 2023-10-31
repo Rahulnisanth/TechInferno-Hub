@@ -814,6 +814,8 @@ img {
   Single Message
 ========================*/
 #message___box {
+  position: absolute;
+  z-index: 3;
   width: 100%;
   display: flex;
   align-items: center;

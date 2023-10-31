@@ -14,3 +14,5 @@ ProjectCaster/__init__.py
 ProjectCaster/asgi.py
 ProjectCaster/settings.py
 ProjectCaster/wsgi.py
+API/__pycache__
+API/__init__.py
