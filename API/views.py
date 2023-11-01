@@ -41,3 +41,13 @@ def getProfile(request, pk):
       serializer = ProfileSerializer(profile, many=False)
       return Response(serializer.data)
 
+@api_view(['DELETE'])
+def removeTag(request):
+      tagId = request.data['tag']
+      projectId = request.data['project']
+
+      project = Project.objects.get(id=projectId)
+      tag = Tag.objects.get(id=tagId)
+
+      project.tags.remove(tag)
+      return Response('Tag was deleted!')

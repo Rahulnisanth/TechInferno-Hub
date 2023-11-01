@@ -32,7 +32,7 @@
         <div class="column">
           <div class="card project">
             <a href="{% url 'single-project' project.id %}" class="project">
-              <img class="project__thumbnail" src="{{project.featured_image.url}}" alt="project thumbnail" />
+              <img class="project__thumbnail" src="{{project.ImageURL}}" alt="project thumbnail" />
               <div class="card__body">
                 <p><a class="project__author" href="{% url 'single-profile' project.owner.id %}">By
                     {{project.owner}} &#8594;</a></p>
@@ -48,6 +48,7 @@
                     <small>{{tag}}</small>
                   </span>
                   {% endfor %}
+
                 </div>
               </div>
             </a>

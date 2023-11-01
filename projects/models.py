@@ -3,7 +3,7 @@ import uuid
 from user.models import Profile
 
 class Project(models.Model):
-      owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
+      owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
       title = models.CharField(max_length=200)
       domain = models.CharField(max_length=200, null=True, blank=True)
       description = models.TextField(null=True, blank=True)
@@ -12,12 +12,20 @@ class Project(models.Model):
       source_link = models.CharField(max_length=2000, null=True, blank=True)
       tags = models.ManyToManyField('Tag', blank=True)
       vote_total = models.IntegerField(default=0, blank=True, null=True)
-      created = models.DateTimeField(auto_now_add=True)
+      created = models.DateTimeField(auto_now_add=True)     
       id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
       def __str__(self) -> str:
             return self.title
 
+      @property
+      def ImageURL(self):
+            try:
+                  url = self.featured_image.url
+            except:
+                  url = 'media/images/default.png'
+            return url
+      
       class Meta:
             ordering = ['-vote_total','title']
       
@@ -50,7 +58,7 @@ class Review(models.Model):
       class Meta:
             unique_together =[['owner','project']]
 
-            
+
 class Tag(models.Model):
       name = models.CharField(max_length=200)
       created = models.DateTimeField(auto_now_add=True)

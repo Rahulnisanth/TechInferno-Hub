@@ -130,10 +130,11 @@ def inbox(request):
 
 def messageInbox(request, pk):
       text = Message.objects.get(id=pk)
+      sender = Profile.objects.get(username=text.sender)
       if text.is_read == False:
             text.is_read = True
             text.save()
-      context = {'text':text}
+      context = {'text':text,'sender':sender}
       return render(request, 'message.html', context)
 
 
@@ -158,5 +159,5 @@ def messageForm(request, pk):
                   messages.success(request, 'Message sent successfully')
                   return redirect('single-profile', pk=receiver.id)
             
-      context = {'form':form}
+      context = {'form':form, 'profile': receiver}
       return render(request, 'message_form.html', context)

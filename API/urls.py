@@ -16,5 +16,6 @@ urlpatterns = [
       path('project/<str:pk>/', views.getProject),
       path('profiles/', views.getProfiles),
       path('profile/<str:pk>/', views.getProfile),
-
+      path('remove-tag/', views.removeTag),
+      
 ]

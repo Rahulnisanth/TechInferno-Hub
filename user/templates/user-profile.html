@@ -8,7 +8,7 @@
                               <div class="card__body dev">
                                     <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-profile' %}">
                                           Edit <i class="fa-solid fa-pen"></i></a>
-                                    <img class="avatar avatar--xl dev__avatar" src="{{profile.profile_picture.url}}" />
+                                    <img class="avatar avatar--xl dev__avatar" src="{{profile.ImageURL}}" />
                                     <h2 class="dev__name">{{profile.username}}</h2>
                                     <p class="dev__title">{{profile.job_role}}</p>
                                     <p class="dev__location">Based in {{profile.location}}</p>
@@ -95,7 +95,7 @@
                               <tr>
                                     <td class="settings__thumbnail">
                                           <a href="{% url 'single-project' project.id %}"><img
-                                                      src="{{project.featured_image.url}}" /></a>
+                                                      src="{{project.ImageURL}}" /></a>
                                     </td>
                                     <td class="settings__tableInfo">
                                           <a href="{% url 'single-project' project.id %}">{{project.title}}</a>
