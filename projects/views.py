@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from projects.utils import SearchProjects, paginateProjects
 from .models import *
 from .forms import *
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from django.http import FileResponse
 
 def projects(request):
       projects, search_query = SearchProjects(request)
@@ -47,6 +47,13 @@ def createProject(request):
                   return redirect('projects')
       context = {'form' : project_form}
       return render(request, 'project_form.html', context)
+
+@login_required(login_url='login_user')
+def download_documentation(request, pk):
+      project = get_object_or_404(Project, id=pk)
+      file_path =  project.project_documentation.path
+      return FileResponse(open(file_path, 'rb'), as_attachment=True)
+
 
 def updateProject(request, pk):
       profile = request.user.profile

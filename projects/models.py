@@ -10,6 +10,7 @@ class Project(models.Model):
       featured_image = models.ImageField(null=True, blank=True, default='images/default.png', upload_to='images/')
       demo_link = models.CharField(max_length=2000, null=True, blank=True)
       source_link = models.CharField(max_length=2000, null=True, blank=True)
+      project_documentation = models.FileField(null=True, blank=True, upload_to='project__docs/')
       tags = models.ManyToManyField('Tag', blank=True)
       vote_total = models.IntegerField(default=0, blank=True, null=True)
       created = models.DateTimeField(auto_now_add=True)     
