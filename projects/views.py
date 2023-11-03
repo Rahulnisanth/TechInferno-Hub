@@ -9,7 +9,7 @@ from django.http import FileResponse
 
 def projects(request):
       projects, search_query = SearchProjects(request)
-      custom_range, projects = paginateProjects(request, projects, 9)
+      custom_range, projects = paginateProjects(request, projects, 6)
       context = {'projects' : projects, 'search_query' : search_query, 'custom_range' : custom_range}
       return render(request, 'projects.html', context)
 
