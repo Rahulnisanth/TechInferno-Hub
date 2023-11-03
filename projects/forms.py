@@ -14,7 +14,11 @@ class ProjectForm(ModelForm):
             super(ProjectForm, self).__init__(*args, **kwargs)
 
             for name, field in self.fields.items():
-                  field.widget.attrs.update({'class':'input','placeholder':f"Add projects's {name} here"})
+                  if name != 'demo_link':
+                        field.widget.attrs.update({'class':'input','placeholder':f"Add projects's {name} here", 'required':True})
+                  else:
+                        field.widget.attrs.update({'class':'input','placeholder':f"Add projects's {name} here"})
+
 
 
 class ReviewForm(ModelForm):
@@ -31,4 +35,4 @@ class ReviewForm(ModelForm):
             super(ReviewForm, self).__init__(*args, **kwargs)
 
             for name, field in self.fields.items():
-                  field.widget.attrs.update({'class':'input'})
+                  field.widget.attrs.update({'class':'input', 'required':True})
