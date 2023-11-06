@@ -194,7 +194,6 @@ img {
   align-items: center;
   background: url(../images/Animated\ Shape.svg);
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
 }
 
@@ -516,7 +515,7 @@ img {
   Projects Page
 ========================*/
 .projects>.hero-section {
-  height: 30vh;
+  height: 40vh;
 }
 
 .projects .hero-section__box {
