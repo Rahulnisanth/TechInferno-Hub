@@ -7,6 +7,19 @@
   background-color: var(--color-sub-light);
 }
 
+main::after {
+  z-index: -1;
+  opacity: 0.1;
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url(../images/pattern.jpg);
+}
+
 .card {
   border: 2px solid var(--color-light);
 }
@@ -388,6 +401,8 @@ img {
 
 .devInfo__about,
 .devSkill__info {
+  background-color: #ffffff;
+  padding: 3rem 3rem;
   font-size: 1.45rem;
   line-height: 1.7;
   text-align: justify;
