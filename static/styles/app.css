@@ -189,9 +189,13 @@ img {
 
 .hero-section {
   height: 40vh;
+  width: 100%;
   display: flex;
   align-items: center;
-  background-color: var(--color-sub);
+  background: url(../images/Animated\ Shape.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .hero-section__box {

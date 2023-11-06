@@ -4,7 +4,7 @@ from django.db.models import Q
 
 
 def paginateProjects(request, projects, results):
-      page = request.GET.get('page')
+      page = request.GET.get("page")
       paginator = Paginator(projects, results)
       try:
             projects = paginator.page(page)
@@ -14,11 +14,11 @@ def paginateProjects(request, projects, results):
       except EmptyPage:
             page = paginator.num_pages
             projects = paginator.page(page)
-            
-      leftIndex = (int(page) - 4)
+
+      leftIndex = int(page) - 4
       if leftIndex < 1:
             leftIndex = 1
-      rightIndex = (int(page) + 5)
+      rightIndex = int(page) + 5
       if rightIndex > paginator.num_pages:
             rightIndex = paginator.num_pages
       custom_range = range(leftIndex, rightIndex)
@@ -26,16 +26,16 @@ def paginateProjects(request, projects, results):
 
 
 def SearchProjects(request):
-      search_query = ''
-      if request.GET.get('search_query'):
-            search_query = request.GET.get('search_query')
-      
+      search_query = ""
+      if request.GET.get("search_query"):
+            search_query = request.GET.get("search_query")
+
       tags = Tag.objects.filter(name__icontains=search_query)
       projects = Project.objects.distinct().filter(
-            Q(title__icontains=search_query) | 
-            Q(domain__icontains=search_query) | 
-            Q(description__icontains=search_query) | 
-            Q(owner__username__icontains=search_query) |
-            Q(tags__in=tags)
+            Q(title__icontains=search_query)
+            | Q(domain__icontains=search_query)
+            | Q(description__icontains=search_query)
+            | Q(owner__username__icontains=search_query)
+            | Q(tags__in=tags)
       )
       return projects, search_query
