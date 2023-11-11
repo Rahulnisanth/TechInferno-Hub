@@ -6,6 +6,11 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Driver-JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css" />
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+  <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
   <!-- Favicon -->
   <link rel="shortcut icon" href="{% static 'images/cloud_caster.png' %}" type="image/x-icon" />
   <!-- Font Awesome icons -->
@@ -13,8 +18,6 @@
   <!-- Mumble UI -->
   <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
   <!-- Dev Search UI -->
-  <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
-
   <title>ProjectCaster - Connect by Projects</title>
 </head>
 
@@ -37,7 +40,8 @@
   {% block content %}
   {% endblock content %}
 </body>
-<script src="{% static 'uikit/app.js' %}"></script>
+<!-- Main js -->
 <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'uikit/app.js' %}"></script>
 
 </html>
