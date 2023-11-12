@@ -50,6 +50,8 @@
             </ul>
             {% if request.user.profile.id != profile.id %}
             <a href="{% url 'message-form' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
+            {% else %}
+            <a href="{% url 'favorite-list' %}" class="btn btn--sub btn--lg"> Bookmarks </a>
             {% endif %}
 
           </div>

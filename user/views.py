@@ -19,17 +19,19 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, "User has logged in successfully")
+            messages.success(
+                request, f"Welcome {username}, You've logged in successfully!"
+            )
             return redirect("/")
         else:
-            messages.error(request, "An Error has occurred")
+            messages.error(request, "Some Error has occurred, Please try again!")
             return render(request, "login.html")
     return render(request, "login.html")
 
 
 def logout_user(request):
     logout(request)
-    messages.info(request, "User has logged out")
+    messages.info(request, "Your account has logged-out successfully!")
     return redirect("/")
 
 
@@ -41,7 +43,10 @@ def registerUser(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
-            messages.success(request, "User was successfully registered")
+            messages.success(
+                request,
+                f"Hello {user.username}!,Your account has been registered successfully!",
+            )
             login(request, user)
             return redirect("/")
     context = {"flag": flag, "form": form}
@@ -81,7 +86,7 @@ def editProfile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "Profile updated successfully")
+            messages.success(request, "Your Profile has been updated successfully")
             return redirect("user-profile")
     context = {"form": form}
     return render(request, "profile_form.html", context)
@@ -97,7 +102,7 @@ def addSkill(request):
             skill = form.save(commit=False)
             skill.owner = profile
             skill.save()
-            messages.info(request, "Skill added successfully")
+            messages.success(request, "New Skill has been added successfully")
             return redirect("user-profile")
     context = {"form": form}
     return render(request, "skill_form.html", context)
@@ -112,7 +117,7 @@ def editSkill(request, pk):
         form = SkillForm(request.POST, instance=skill)
         if form.is_valid():
             form.save()
-            messages.info(request, "Skill add Successfully")
+            messages.success(request, f"Successfully edited {skill.name}")
             return redirect("user-profile")
     context = {"form": form}
     return render(request, "skill_form.html", context)
@@ -123,7 +128,7 @@ def deleteSkill(request, pk):
     skill = profile.skill_set.get(id=pk)
     if request.method == "POST":
         skill.delete()
-        messages.info(request, "Skill deleted successfully")
+        messages.error(request, f"{skill.name} has been deleted!")
         return redirect("user-profile")
     context = {"skill": skill}
     return render(request, "delete-skill.html", context)
@@ -167,7 +172,9 @@ def messageForm(request, pk):
             if sender:
                 text.name = sender.username
             text.save()
-            messages.success(request, "Message sent successfully")
+            messages.success(
+                request, f"Message has been sent to {receiver} successfully"
+            )
             return redirect("single-profile", pk=receiver.id)
 
     context = {"form": form, "profile": receiver}

@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Section -->
+<main class="projects">
+    <section class="projectsList">
+        <div class="container">
+            <div class="grid grid--three">
+                {% for project in favorite_list %}
+                <div class="column">
+                    <div class="card project">
+                        <a href="{% url 'single-project' project.id %}" class="project">
+                            <img class="project__thumbnail" src="{{project.ImageURL}}" alt="project thumbnail" />
+                            <div class="card__body">
+                                <a href="{% url 'add-favorite' project.id %}"><i class="fa-solid fa-bookmark"></i></a>
+                                <p><a class="project__author" href="{% url 'single-profile' project.owner.id %}">By
+                                        {{project.owner}} &#8594;</a></p>
+                                <h3 class="project__title">{{project.domain}}</h3>
+                                <p>{{project.title}}</p>
+                                <p class="project--rating">
+                                    <span style="font-weight: bold;">{{project.vote_total}}</span>
+                                    Endorsement{{project.vote_total|pluralize}}
+                                </p>
+                                <div class="project__tags">
+                                    {% for tag in project.tags.all|slice:":3" %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>{{tag}}</small>
+                                    </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% include 'pagination.html' with queryset=projects custom_range=custom_range %}
+</main>
+{% endblock content %}

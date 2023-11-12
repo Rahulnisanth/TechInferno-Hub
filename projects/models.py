@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from user.models import Profile
+from django.contrib.auth.models import User
 
 
 class Project(models.Model):
@@ -16,6 +17,7 @@ class Project(models.Model):
     project_documentation = models.FileField(
         null=True, blank=True, upload_to="project__docs/"
     )
+    favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     tags = models.ManyToManyField("Tag", blank=True)
     vote_total = models.IntegerField(default=0, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
