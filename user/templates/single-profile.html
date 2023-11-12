@@ -59,14 +59,14 @@
         <div class="devInfo">
           <h3 class="devInfo__title">About Me</h3>
           <p class="devInfo__about">
-            <i class="fa-solid fa-quote-left"></i> {{profile.short_intro}}
+            <i class="fa-solid fa-hashtag"></i> {{profile.short_intro}}
             <br />
             <br />
             {{profile.bio|linebreaksbr}}
           </p>
         </div>
         <div class="devInfo">
-          <h3 class="devInfo__title">Skills</h3>
+          <h3 class="devInfo__title">Descriptive Skills</h3>
           <div class="devInfo__skills">
             {% for skill in profile.skill_set.all|slice:":2" %}
             <div class="devSkill">

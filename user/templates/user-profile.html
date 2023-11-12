@@ -54,7 +54,7 @@
                         <div class="devInfo">
                               <h3 class="devInfo__title">About Me</h3>
                               <p class="devInfo__about">
-                                    <i class="fa-solid fa-quote-left"></i> {{profile.short_intro}}
+                                    <i class="fa-solid fa-hashtag"></i> {{profile.short_intro}}
                                     <br />
                                     <br />
                                     {{profile.bio|linebreaksbr}}
@@ -100,7 +100,7 @@
                                     <td class="settings__tableInfo">
                                           <a href="{% url 'single-project' project.id %}">{{project.title}}</a>
                                           <p>
-                                                {{project.description | slice:"120"}} . . .
+                                                {{project.description | slice:"110"}} . . .
                                           </p>
                                     </td>
                                     <td class="settings__tableActions">
