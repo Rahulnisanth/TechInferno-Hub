@@ -56,7 +56,6 @@ def profiles(request):
         "search_query": search_query,
         "custom_range": custom_range,
     }
-    request.session["redirected"] = True
     return render(request, "profiles.html", context)
 
 
