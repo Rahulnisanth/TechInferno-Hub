@@ -35,7 +35,8 @@
 
                 <div class="bookmark">
                   <div>
-                    <span><i class="fa-solid fa-eye"></i>{{project.view_count}}</span>
+                    <span style="font-size: 13px;text-decoration: none;"><i class="fa-solid fa-eye"></i>
+                      {{project.view_count}} Views</span>
                   </div>
                   <div>
                     {% if user in project.favorite.all %}
@@ -43,6 +44,7 @@
                     {% else %}
                     <a href="{% url 'add-favorite' project.id %}"><i class="fa-regular fa-bookmark"></i></a>
                     {% endif %}
+
                   </div>
                 </div>
 

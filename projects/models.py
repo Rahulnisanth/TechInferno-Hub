@@ -85,3 +85,16 @@ class Tag(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class ProjectView(models.Model):
+    post = models.ForeignKey(Project, on_delete=models.CASCADE)
+    session_key = models.CharField(max_length=40, blank=True, null=True)
+    ip_address = models.GenericIPAddressField(blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("post", "session_key", "ip_address")
+
+    def __str__(self) -> str:
+        return self.session_key

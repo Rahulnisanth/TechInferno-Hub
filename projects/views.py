@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.http import FileResponse
+from django.contrib.sessions.models import Session
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 def projects(request):
@@ -19,9 +22,32 @@ def projects(request):
     return render(request, "projects.html", context)
 
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(",")[0]
+    else:
+        ip = request.META.get("REMOTE_ADDR")
+    return ip
+
+
 @login_required(login_url="login_user")
 def singleProject(request, pk):
     projectObj = Project.objects.get(id=pk)
+
+    if request.user != projectObj.owner:
+        ip_address = get_client_ip(request)
+        session_key = request.session.session_key
+        # Check if the view has not been counted based on session and IP
+        if not ProjectView.objects.filter(
+            post=projectObj, session_key=session_key, ip_address=ip_address
+        ).exists():
+            projectObj.view_count += 1
+            projectObj.save()
+            ProjectView.objects.create(
+                post=projectObj, session_key=session_key, ip_address=ip_address
+            )
+
     form = ReviewForm()
     if request.method == "POST":
         form = ReviewForm(request.POST)
@@ -33,12 +59,7 @@ def singleProject(request, pk):
             projectObj.getVotetotal
             messages.success(request, "Your Review was Submitted Successfully!")
             return redirect("single-project", pk=projectObj.id)
-    if request.user != projectObj.owner and not request.session.get(
-        f"project_view_{projectObj.id}"
-    ):
-        projectObj.view_count += 1
-        projectObj.save()
-        request.session[f"project_view_{projectObj.id}"] = True
+
     context = {"project": projectObj, "form": form}
     return render(request, "single-project.html", context)
 

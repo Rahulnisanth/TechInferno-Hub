@@ -38,9 +38,11 @@
         <a href="{% url 'single-profile' project.owner.id %}" class="singleProject__developer"> Hosted by <i
             class="fa-solid fa-hashtag"></i>
           {{project.owner}}</a>
-        <h2 class="singleProject__title">{{project.title}}</h2>
 
-        <h3 class="singleProject__subtitle">About the Project</h3>
+        <h2 class="singleProject__title">{{project.title}}</h2>
+        <h3 class="singleProject__subtitle">About the Project <span style="font-size: 15px;text-decoration: none;">(<i
+              class="fa-solid fa-eye"></i>
+            {{project.view_count}} Views)</span></h3>
         <div class="singleProject__info">
           {{project.description}}
         </div>

@@ -7,6 +7,8 @@ from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .utils import SearchProfiles, paginateProfiles
+from django.contrib.sessions.models import Session
+from django.utils import timezone
 
 
 def login_user(request):
@@ -67,12 +69,6 @@ def profiles(request):
 @login_required(login_url="login_user")
 def singleProfile(request, pk):
     profile = Profile.objects.get(id=pk)
-    if request.user != profile.user and not request.session.get(
-        f"profile_view_{profile.id}"
-    ):
-        profile.view_count += 1
-        profile.save()
-        request.session[f"profile_view_{profile.id}"] = True
     context = {"profile": profile}
     return render(request, "single-profile.html", context)
 
