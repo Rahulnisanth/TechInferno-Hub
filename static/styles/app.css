@@ -22,12 +22,16 @@ BookMarks
 /* ========================== */
 .bookmark {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: 15px;
   margin-top: -20px;
 }
 
-*/ .card {
+.bookmark span i {
+  padding-right: 5px;
+}
+
+.card {
   border: 2px solid var(--color-light);
 }
 

@@ -33,6 +33,12 @@ def singleProject(request, pk):
             projectObj.getVotetotal
             messages.success(request, "Your Review was Submitted Successfully!")
             return redirect("single-project", pk=projectObj.id)
+    if request.user != projectObj.owner and not request.session.get(
+        f"project_view_{projectObj.id}"
+    ):
+        projectObj.view_count += 1
+        projectObj.save()
+        request.session[f"project_view_{projectObj.id}"] = True
     context = {"project": projectObj, "form": form}
     return render(request, "single-project.html", context)
 

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
@@ -67,6 +67,12 @@ def profiles(request):
 @login_required(login_url="login_user")
 def singleProfile(request, pk):
     profile = Profile.objects.get(id=pk)
+    if request.user != profile.user and not request.session.get(
+        f"profile_view_{profile.id}"
+    ):
+        profile.view_count += 1
+        profile.save()
+        request.session[f"profile_view_{profile.id}"] = True
     context = {"profile": profile}
     return render(request, "single-profile.html", context)
 

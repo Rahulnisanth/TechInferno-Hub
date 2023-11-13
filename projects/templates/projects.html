@@ -34,11 +34,16 @@
               <div class="card__body">
 
                 <div class="bookmark">
-                  {% if user in project.favorite.all %}
-                  <a href="{% url 'add-favorite' project.id %}"><i class="fa-solid fa-bookmark"></i></a>
-                  {% else %}
-                  <a href="{% url 'add-favorite' project.id %}"><i class="fa-regular fa-bookmark"></i></a>
-                  {% endif %}
+                  <div>
+                    <span><i class="fa-solid fa-eye"></i>{{project.view_count}}</span>
+                  </div>
+                  <div>
+                    {% if user in project.favorite.all %}
+                    <a href="{% url 'add-favorite' project.id %}"><i class="fa-solid fa-bookmark"></i></a>
+                    {% else %}
+                    <a href="{% url 'add-favorite' project.id %}"><i class="fa-regular fa-bookmark"></i></a>
+                    {% endif %}
+                  </div>
                 </div>
 
                 <p><a class="project__author" href="{% url 'single-profile' project.owner.id %}">By

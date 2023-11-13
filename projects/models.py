@@ -20,6 +20,7 @@ class Project(models.Model):
     favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     tags = models.ManyToManyField("Tag", blank=True)
     vote_total = models.IntegerField(default=0, blank=True, null=True)
+    view_count = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
