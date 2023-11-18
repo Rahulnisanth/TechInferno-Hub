@@ -12,7 +12,10 @@ class Blog(models.Model):
         null=True, blank=True, default="images/default.png", upload_to="blog_images/"
     )
     likes = models.ManyToManyField(
-        User, related_name="blog_likes", blank=True, null=True
+        User,
+        related_name="blog_likes",
+        null=True,
+        blank=True,
     )
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
@@ -28,11 +31,6 @@ class Blog(models.Model):
         return reviewers
 
 
-class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-
-
 class Comment(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
@@ -43,7 +41,7 @@ class Comment(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.value
+        return str(self.blog)
 
     class Meta:
         unique_together = [["owner", "blog"]]

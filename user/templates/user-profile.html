@@ -49,7 +49,7 @@
                                     </ul>
                                     <div class="buttonz">
                                           <a id="first" href="{% url 'favorite-list' %}"
-                                                class="btn btn--sm">Bookmarks</a>
+                                                class="btn btn--sm">Favorites</a>
                                           <a href="{% url 'inbox' %}" class="btn btn--sm">Messages</a>
                                     </div>
                               </div>
@@ -117,6 +117,44 @@
                               </tr>
                               {% endfor %}
                         </table>
+                        <!-- BLOG_POST-SET TABLE -->
+                        <div class="settings">
+                              <h3 class="settings__title">Blog Posts</h3>
+                              <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-blog' %}"><i
+                                          class="fa-solid fa-plus"></i> Add
+                                    Blog</a>
+                        </div>
+                        <br />
+                        <div class="devInfo">
+                              <div class="grid grid--two">
+                                    <!-- ======== PROJECTS-SECTION ======= -->
+                                    {% for blog in profile.blog_set.all %}
+                                    <div class="column">
+                                          <div class="card project">
+                                                <a href="{% url 'single-blog' blog.id %}" class="blog">
+                                                      <img class="blog__thumbnail" src="{{ blog.featured_image.url }}"
+                                                            alt="blog thumbnail" />
+                                                      <div class="card__body">
+                                                            <p class="blog__title">{{blog.description | slice:"110"}} .
+                                                                  . .
+                                                            </p>
+                                                            <div class="blog--editables">
+                                                                  <a style="padding:1.2rem 1.2rem 1rem 1rem;"
+                                                                        class="tag tag--pill tag--main settings__btn"
+                                                                        href="{% url 'edit-blog' blog.id %}"><i
+                                                                              class="fa-solid fa-pen"></i></a>
+                                                                  <a style="padding:1.2rem 1.2rem 1rem 1rem; position:relative; left: 265px;"
+                                                                        class="tag tag--pill tag--main settings__btn"
+                                                                        href="{% url 'delete-blog' blog.id %}?next=/user-profile"><i
+                                                                              class="fa-solid fa-trash"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </a>
+                                          </div>
+                                    </div>
+                                    {% endfor %}
+                              </div>
+                        </div>
                   </div>
             </div>
       </div>

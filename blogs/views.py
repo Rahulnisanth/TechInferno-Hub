@@ -1,14 +1,10 @@
-from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
-from django.views import View
+from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST
+from django.contrib import messages
 
 
-# Create your views here.
 def blogs(request):
     blogs = Blog.objects.all()
     context = {"blogs": blogs}
@@ -28,18 +24,49 @@ def singleBlog(request, pk):
             comment.save()
             messages.success(request, "Your Comment was added Successfully!")
             return redirect("single-blog", pk=blog.id)
-    context = {"blog": blog, "form": form}
+    context = {
+        "blog": blog,
+        "form": form,
+    }
     return render(request, "single-blog.html", context)
 
 
 @login_required(login_url="login_user")
-def toggle_like(request, pk):
-    blog = Blog.objects.get(id=pk)
-    user = request.user
-    if Like.objects.filter(user=user, blog=blog).exists():
-        Like.objects.filter(user=user, blog=blog).delete()
-        blog.likes.remove(user)
-    else:
-        Like.objects.create(user=user, blog=blog)
-        blog.likes.add(user)
-    return redirect("single-blog", pk=pk)
+def createBlog(request):
+    profile = request.user.profile
+    blog_form = BlogForm(instance=profile)
+    if request.method == "POST":
+        blog_form = BlogForm(request.POST)
+        if blog_form.is_valid():
+            blog = blog_form.save(commit=False)
+            blog.owner = profile
+            blog.save()
+            return redirect("blogs")
+    context = {"form": blog_form}
+    return render(request, "blog_form.html", context)
+
+
+def editBlog(request, pk):
+    profile = request.user.profile
+    blog = profile.blog_set.get(id=pk)
+    blog_form = BlogForm(instance=blog)
+    if request.method == "POST":
+        blog_form = BlogForm(request.POST, request.FILES, instance=blog)
+        if blog_form.is_valid():
+            blog_form.save()
+            messages.success(request, "Blog Post was updated Successfully!")
+            return redirect("blogs")
+    context = {"form": blog_form, "blog": blog}
+    return render(request, "blog_form.html", context)
+
+
+def deleteBlog(request, pk):
+    profile = request.user.profile
+    blog = profile.blog_set.get(id=pk)
+    blog_form = BlogForm(instance=blog)
+    if request.method == "POST":
+        blog.delete()
+        messages.error(request, "Your blog was deleted Successfully!")
+        return redirect("blogs")
+    context = {"blog": blog}
+    return render(request, "delete-blog.html", context)

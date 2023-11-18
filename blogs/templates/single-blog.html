@@ -3,8 +3,10 @@
 <main class="singleProject my-md">
     <div class="container">
         <div class="layout">
-            <div class="column column--2of3">
-                <img class="singleProject__preview" src="{{blog.featured_image.url}}" alt="portfolio thumbnail" />
+            <div class="column column--3of3">
+                <div class="image--preview">
+                    <img class="singleProject__preview" src="{{blog.featured_image.url}}" alt="portfolio thumbnail" />
+                </div>
                 <div class="blog--header">
                     <div class="left">
                         <a href="{% url 'single-profile' blog.owner.id %}">
@@ -17,9 +19,7 @@
                     </div>
 
                     <div class="right">
-                        <button id="likeButton" data-url="{% url 'toggle-like' blog.id %}"><i
-                                class="fa-regular fa-heart"></i></button>
-                        <span id="likeCount">{{blog.likes.count}} UpVotes </span>
+                        <a><i class="fa-solid fa-heart"></i> 10 Upvotes</a>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
                     {% elif request.user.profile == blog.owner %}
                     <p class="devote__text">OOPs! You can't vote for your own blog.</p>
                     {% else %}
-                    <form class="form" action="" method="POST">
+                    <form class="form" action="{% url 'single-blog' pk=blog.id %}" method="POST">
                         {% csrf_token %}
                         <!-- Textarea -->
                         <div class="form__field">
@@ -75,15 +75,27 @@
     </div>
 </main>
 <script>
-    var likeButton = document.getElementById('likeButton');
-    var likeCount = document.getElementById('likeCount');
-    likeButton.addEventListener('click', function () {
-        fetch(likeButton.getAttribute('data-url'))
-            .then(response => response.json())
-            .then(data => {
-                likeCount.innerText = data.likes_count;
-                console.log(data);
-            });
+    document.addEventListener("DOMContentLoaded", function () {
+        var likeButton = document.getElementById('likeButton');
+        var likeCount = document.getElementById('likeCount');
+
+        likeButton.addEventListener('click', function () {
+            fetch(likeButton.getAttribute('data-url'), {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    likeCount.innerText = data.likes_count;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
     });
 </script>
 {% endblock content %}

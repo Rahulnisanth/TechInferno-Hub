@@ -58,8 +58,14 @@ Blogs
 }
 
 /* Right Styles */
+.blog--header .right {
+  display: flex;
+  align-items: center;
+}
+
 .blog--header .right a {
   font-size: x-large;
+  margin-left: 1rem;
 }
 
 /* 
@@ -101,6 +107,7 @@ img {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding-top: 1rem;
 }
 
 .buttonz #first {
@@ -541,9 +548,16 @@ img {
   margin-right: 1rem;
 }
 
+.image--preview {
+  height: fit-content;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .singleProject__preview {
-  height: 50vh;
-  object-fit: contain;
+  /* height: 50vh; */
+  object-fit: cover;
   object-position: center;
   margin-bottom: 3rem;
   border-radius: 0.7rem;
@@ -557,7 +571,7 @@ img {
 .singleProject__title {
   font-size: 3.6rem;
   font-weight: 700;
-  color: var(--color-sub);
+  color: var(--color-main);
   margin-bottom: 1.5rem;
 }
 
@@ -638,9 +652,15 @@ img {
   font-size: 18px;
 }
 
+.blog--editables {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
 .comments {
   margin-top: 4rem;
   border-top: 2px solid var(--color-light);
+  padding-top: 1rem;
 }
 
 .comments .form label {

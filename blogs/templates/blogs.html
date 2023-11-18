@@ -21,11 +21,13 @@
                                             {{blog.owner}}</a>
                                     </div>
                                 </div>
-                                <p>{{blog.description | slice:"100"}}...</p>
+                                <p>{{blog.description | slice:"80"}} . . .</p>
 
-                                <span style="color: var(--color-main); font-size: small;">
-                                    <small>{{blog.created}}</small>
-                                </span>
+                                <div style="padding: 1rem 0 1rem 0;" class="created">
+                                    <span style="color: var(--color-main); font-size: small;">
+                                        <small>{{blog.created}}</small>
+                                    </span>
+                                </div>
 
                             </div>
                         </a>
@@ -35,5 +37,6 @@
             </div>
         </div>
     </div>
+    {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
 </section>
 {% endblock content %}
