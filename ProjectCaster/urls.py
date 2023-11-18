@@ -9,6 +9,7 @@ urlpatterns = [
     path("", include("user.urls")),
     path("api/", include("API.urls")),
     path("projects/", include("projects.urls")),
+    path("blogs/", include("blogs.urls")),
     path(
         "reset_password/",
         auth_views.PasswordResetView.as_view(template_name="reset_password.html"),

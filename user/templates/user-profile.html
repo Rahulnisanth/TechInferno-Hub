@@ -47,7 +47,11 @@
                                           </li>
                                           {% endif %}
                                     </ul>
-                                    <a href="{% url 'favorite-list' %}" class="btn btn--sub btn--lg"> Bookmarks</a>
+                                    <div class="buttonz">
+                                          <a id="first" href="{% url 'favorite-list' %}"
+                                                class="btn btn--sm">Bookmarks</a>
+                                          <a href="{% url 'inbox' %}" class="btn btn--sm">Messages</a>
+                                    </div>
                               </div>
                         </div>
                   </div>

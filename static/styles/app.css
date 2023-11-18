@@ -18,6 +18,34 @@ main::after {
 
 /* 
 ==========================
+Blogs 
+/* ========================== */
+
+.blog--header {
+  margin-top: -30px;
+}
+
+/* Left styles */
+.blog--header .left {
+  display: flex;
+  align-items: center;
+}
+
+.blog--header .left .avatar__img {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.blog--header .left .project_title {
+  margin-left: 6px;
+}
+
+/* Right Styles */
+
+
+
+/* 
+==========================
 BookMarks
 /* ========================== */
 .bookmark {
@@ -48,6 +76,17 @@ img {
   width: 95%;
   max-width: 85rem;
   margin: 0 auto;
+}
+
+.buttonz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buttonz #first {
+  margin-right: 15px;
 }
 
 /*=======================
@@ -501,7 +540,7 @@ img {
   font-size: 3.6rem;
   font-weight: 700;
   color: var(--color-sub);
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .project__author {

@@ -13,18 +13,12 @@
                         <div class="toggle-menu__lines"></div>
                   </label>
                   <ul class="header__menu">
+                        <li class="header__menuItem"><a href="{% url 'blogs' %}">Blogs</a></li>
                         <li class="header__menuItem"><a href="{% url 'profiles' %}">Developers</a>
                         </li>
                         <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
 
                         {% if request.user.is_authenticated %}
-                        {% if unreadCount > 0 %}
-                        <li class="header__menuItem"><a href="{% url 'inbox' %}"> <i
-                                          class="fa-solid fa-bell fa-shake"></i></a></li>
-                        {% else %}
-                        <li class="header__menuItem"><a href="{% url 'inbox' %}">Messages</a>
-                        </li>
-                        {% endif %}
                         <li class="header__menuItem"><a href="{% url 'user-profile' %}">My Profile</a></li>
                         <li class="header__menuItem"><a href="{% url 'logout_user' %}" class="btn btn--sub">Logout</a>
                         </li>

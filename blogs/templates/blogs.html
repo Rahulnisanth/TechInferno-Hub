@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block content %}
+<section class="projectsList">
+    <div class="container">
+        <div class="total-grid">
+            <!-- Left blogs -->
+            <div class="grid grid--three">
+                {% for blog in blogs %}
+                <div class="column">
+                    <div class="card project">
+                        <a href="{% url 'single-blog' blog.id %}" class="project">
+                            <img class="project__thumbnail" src="{{blog.featured_image.url}}" alt="project thumbnail" />
+                            <div class="card__body">
+                                <div class="blog--header">
+                                    <div class="left">
+                                        <a href="{% url 'single-profile' blog.owner.id %}">
+                                            <img style="height: 3.5rem;width: 3.5rem;" class="avatar avatar__md"
+                                                src="{{blog.owner.profile_picture.url}}" alt="user" />
+                                        </a>
+                                        <a class="project_title" href="{% url 'single-profile' blog.owner.id %}">
+                                            {{blog.owner}}</a>
+                                    </div>
+                                </div>
+                                <p>{{blog.description | slice:"100"}}...</p>
+
+                                <span style="color: var(--color-main); font-size: small;">
+                                    <small>{{blog.created}}</small>
+                                </span>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
