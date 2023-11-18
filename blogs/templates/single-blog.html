@@ -15,54 +15,53 @@
                             href="{% url 'single-profile' blog.owner.id %}">
                             {{blog.owner}}</a>
                     </div>
-                    <div class="right">
 
+                    <div class="right">
+                        <button id="likeButton" data-url="{% url 'toggle-like' blog.id %}"><i
+                                class="fa-regular fa-heart"></i></button>
+                        <span id="likeCount">{{blog.likes.count}} UpVotes </span>
                     </div>
                 </div>
 
                 <h2 class="singleProject__title"><i class="fa-solid fa-hashtag"></i> {{blog.title}}</h2>
                 <h3 style="margin-top: -10px;" class="singleProject__subtitle"> Blog Description </h3>
                 <div class="singleProject__info">
-                    {{blog.description}}
+                    {{blog.description | linebreaksbr}}
                 </div>
-                <!-- 
+                <!-- COMMENTS STARTER -->
                 <div class="comments">
-                    <h3 class="singleProject__subtitle">Feedback</h3>
-                    <h5 class="project--rating">
-                        {{project.vote_total}} Endorsements
-                    </h5>
-                    
-                    {% if request.user.profile.id in project.reviewers %}
-                    <p class="devote__text">Hurray! You have already voted your review for this project.</p>
-                    {% elif request.user.profile == project.owner %}
-                    <p class="devote__text">OOPs! You can't vote for your own project.</p>
+                    {% if request.user.profile.id in blog.reviewers %}
+                    <p class="devote__text">Hurray! You have already voted your review for this blog.</p>
+                    {% elif request.user.profile == blog.owner %}
+                    <p class="devote__text">OOPs! You can't vote for your own blog.</p>
                     {% else %}
                     <form class="form" action="" method="POST">
                         {% csrf_token %}
-                        
+                        <!-- Textarea -->
                         <div class="form__field">
                             {% for field in form %}
                             <label for="formInput#text">{{field.label}} </label>
                             {{field}}
                             {% endfor %}
                         </div>
-                        <input class="btn btn--sub btn--lg" type="submit" value="Add Comment" />
+                        <input class="btn btn--sub btn--sm" type="submit" value="Add Comment" />
                     </form>
                     {% endif %}
-                    
-                    {% if project.review_set %}
+
+                    <!-- Comments Section -->
+                    {% if blog.comment_set %}
                     <div class="commentList">
-                        {% for review in project.review_set.all %}
+                        {% for comment in blog.comment_set.all %}
                         <div class="comment">
-                            <a href="{% url 'single-profile' review.owner.id %}">
-                                <img class="avatar avatar--md" src="{{review.owner.profile_picture.url}}" alt="user" />
+                            <a href="{% url 'single-profile' comment.owner.id %}">
+                                <img class="avatar avatar--md" src="{{comment.owner.profile_picture.url}}" alt="user" />
                             </a>
                             <div class="comment__details">
-                                <a href="{% url 'single-profile' review.owner.id %}"
-                                    class="comment__author">{{review.owner.username}}</a>
-                                {% if review.body %}
+                                <a href="{% url 'single-profile' comment.owner.id %}"
+                                    class="comment__author">{{comment.owner.username}}</a>
+                                {% if comment.body %}
                                 <p class="comment__info">
-                                    {{review.body}}
+                                    {{comment.body}}
                                 </p>
                                 {% endif %}
                             </div>
@@ -70,10 +69,21 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
-
 </main>
+<script>
+    var likeButton = document.getElementById('likeButton');
+    var likeCount = document.getElementById('likeCount');
+    likeButton.addEventListener('click', function () {
+        fetch(likeButton.getAttribute('data-url'))
+            .then(response => response.json())
+            .then(data => {
+                likeCount.innerText = data.likes_count;
+                console.log(data);
+            });
+    });
+</script>
 {% endblock content %}

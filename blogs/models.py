@@ -11,7 +11,9 @@ class Blog(models.Model):
     featured_image = models.ImageField(
         null=True, blank=True, default="images/default.png", upload_to="blog_images/"
     )
-    upvotes = models.IntegerField(default=0, blank=True, null=True)
+    likes = models.ManyToManyField(
+        User, related_name="blog_likes", blank=True, null=True
+    )
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
@@ -25,22 +27,16 @@ class Blog(models.Model):
         reviewers = self.comment_set.all().values_list("owner__id", flat=True)
         return reviewers
 
-    @property
-    def getVotetotal(self):
-        comments = self.comment_set.all()
-        upVotes = comments.filter(value="up").count()
-        self.vote_total = upVotes
-        self.save()
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
-    VOTE_TYPE = (("up", "UpVote"),)
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
-    value = models.CharField(
-        max_length=200, default=None, blank=False, choices=VOTE_TYPE
-    )
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, primary_key=True, editable=False

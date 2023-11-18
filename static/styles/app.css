@@ -22,10 +22,27 @@ Blogs
 /* ========================== */
 
 .blog--header {
-  margin-top: -30px;
+  margin-top: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Left styles */
+.blog--header-single .left {
+  display: flex;
+  align-items: center;
+}
+
+.blog--header-single .left .avatar__img {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.blog--header-single .left .project_title {
+  margin-left: 6px;
+}
+
 .blog--header .left {
   display: flex;
   align-items: center;
@@ -41,8 +58,9 @@ Blogs
 }
 
 /* Right Styles */
-
-
+.blog--header .right a {
+  font-size: x-large;
+}
 
 /* 
 ==========================
@@ -426,12 +444,12 @@ img {
 }
 
 .dev__social {
-  margin: 3rem 0;
+  margin: 1rem 0;
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .devInfo {
@@ -622,7 +640,6 @@ img {
 
 .comments {
   margin-top: 4rem;
-  padding-top: 3rem;
   border-top: 2px solid var(--color-light);
 }
 
