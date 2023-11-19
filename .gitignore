@@ -16,3 +16,5 @@ ProjectCaster/settings.py
 ProjectCaster/wsgi.py
 API/__pycache__
 API/__init__.py
+blogs/__pycache__
+blogs/migrations

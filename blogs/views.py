@@ -63,7 +63,6 @@ def editBlog(request, pk):
 def deleteBlog(request, pk):
     profile = request.user.profile
     blog = profile.blog_set.get(id=pk)
-    blog_form = BlogForm(instance=blog)
     if request.method == "POST":
         blog.delete()
         messages.error(request, "Your blog was deleted Successfully!")
