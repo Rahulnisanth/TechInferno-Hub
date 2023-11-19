@@ -1,42 +1,45 @@
 {% extends 'index.html' %}
 {% block content %}
-<section class="projectsList">
-    <div class="container">
-        <div class="total-grid">
-            <!-- Left blogs -->
-            <div class="grid grid--three">
-                {% for blog in blogs %}
-                <div class="column">
-                    <div class="card project">
-                        <a href="{% url 'single-blog' blog.id %}" class="project">
-                            <img class="project__thumbnail" src="{{blog.featured_image.url}}" alt="project thumbnail" />
-                            <div class="card__body">
-                                <div style="margin-top: -30px;" class="blog--header-single">
-                                    <div class="left">
-                                        <a href="{% url 'single-profile' blog.owner.id %}">
-                                            <img style="height: 3.5rem;width: 3.5rem;" class="avatar avatar__md"
-                                                src="{{blog.owner.profile_picture.url}}" alt="user" />
-                                        </a>
-                                        <a class="project_title" href="{% url 'single-profile' blog.owner.id %}">
-                                            {{blog.owner}}</a>
+<main>
+    <section class="projectsList">
+        <div class="container">
+            <div class="total-grid">
+                <!-- Left blogs -->
+                <div class="grid grid--three">
+                    {% for blog in blogs %}
+                    <div class="column">
+                        <div class="card project">
+                            <a href="{% url 'single-blog' blog.id %}" class="project">
+                                <img class="project__thumbnail" src="{{blog.featured_image.url}}"
+                                    alt="project thumbnail" />
+                                <div class="card__body">
+                                    <div style="margin-top: -30px;" class="blog--header-single">
+                                        <div class="left">
+                                            <a href="{% url 'single-profile' blog.owner.id %}">
+                                                <img style="height: 3.5rem;width: 3.5rem;" class="avatar avatar__md"
+                                                    src="{{blog.owner.profile_picture.url}}" alt="user" />
+                                            </a>
+                                            <a class="project_title" href="{% url 'single-profile' blog.owner.id %}">
+                                                {{blog.owner}}</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <p>{{blog.description | slice:"80"}} . . .</p>
+                                    <p>{{blog.description | slice:"80"}} . . .</p>
 
-                                <div style="padding: 1rem 0 1rem 0;" class="created">
-                                    <span style="color: var(--color-main); font-size: small;">
-                                        <small>{{blog.created}}</small>
-                                    </span>
-                                </div>
+                                    <div style="padding: 1rem 0 1rem 0;" class="created">
+                                        <span style="color: var(--color-main); font-size: small;">
+                                            <small>{{blog.created}}</small>
+                                        </span>
+                                    </div>
 
-                            </div>
-                        </a>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
-    {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
-</section>
+        {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
+    </section>
+</main>
 {% endblock content %}
