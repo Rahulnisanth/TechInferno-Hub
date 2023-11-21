@@ -19,7 +19,13 @@
                     </div>
 
                     <div class="right">
-                        <a><i class="fa-solid fa-heart"></i> 10 Upvotes</a>
+                        <a href="{% url 'like-blog' blog.id %}" style="text-decoration: none;">
+                            {% if request.user.profile in blog.like.all %}
+                            <i class="fa-solid fa-heart"></i> {{ blog.like.count }} Upvotes
+                            {% else %}
+                            <i class="fa-regular fa-heart"></i> {{ blog.like.count }} Upvotes
+                            {% endif %}
+                        </a>
                     </div>
                 </div>
 
@@ -31,9 +37,9 @@
                 <!-- COMMENTS STARTER -->
                 <div class="comments">
                     {% if request.user.profile.id in blog.reviewers %}
-                    <p class="devote__text">Hurray! You have already voted your review for this blog.</p>
+                    <p class="devote__text">Hurray! You have already commented for this blog post.</p>
                     {% elif request.user.profile == blog.owner %}
-                    <p class="devote__text">OOPs! You can't vote for your own blog.</p>
+                    <p class="devote__text">OOPs! You can't comment for your own blog.</p>
                     {% else %}
                     <form class="form" action="{% url 'single-blog' pk=blog.id %}" method="POST">
                         {% csrf_token %}
@@ -74,28 +80,5 @@
         </div>
     </div>
 </main>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var likeButton = document.getElementById('likeButton');
-        var likeCount = document.getElementById('likeCount');
 
-        likeButton.addEventListener('click', function () {
-            fetch(likeButton.getAttribute('data-url'), {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken,
-                },
-            })
-                .then(response => response.json())
-                .then(data => {
-                    likeCount.innerText = data.likes_count;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    });
-</script>
 {% endblock content %}

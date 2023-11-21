@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
@@ -69,3 +69,18 @@ def deleteBlog(request, pk):
         return redirect("blogs")
     context = {"blog": blog}
     return render(request, "delete-blog.html", context)
+
+
+def likeBlog(request, pk):
+    blog = Blog.objects.get(id=pk)
+    if request.method == "GET":
+        user = request.user.profile
+        if user not in blog.like.all():
+            blog.like.add(user)
+            messages.success(request, "You liked this blog!")
+        else:
+            blog.like.remove(user)
+            messages.error(request, "You Disliked this blog!")
+
+        return redirect("single-blog", pk=pk)
+    return render(request, "single-blog.html")

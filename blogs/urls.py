@@ -7,4 +7,5 @@ urlpatterns = [
     path("create-blog/", createBlog, name="create-blog"),
     path("edit-blog/<str:pk>/", editBlog, name="edit-blog"),
     path("delete-blog/<str:pk>/", deleteBlog, name="delete-blog"),
+    path("like/<str:pk>/", likeBlog, name="like-blog"),
 ]
