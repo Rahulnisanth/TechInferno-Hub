@@ -17,7 +17,6 @@
                             href="{% url 'single-profile' blog.owner.id %}">
                             {{blog.owner}}</a>
                     </div>
-
                     <div class="right">
                         <a href="{% url 'like-blog' blog.id %}" style="text-decoration: none;">
                             {% if request.user.profile in blog.like.all %}
@@ -28,7 +27,6 @@
                         </a>
                     </div>
                 </div>
-
                 <h2 class="singleProject__title"><i class="fa-solid fa-hashtag"></i> {{blog.title}}</h2>
                 <h3 style="margin-top: -10px;" class="singleProject__subtitle"> Blog Description </h3>
                 <div class="singleProject__info">
@@ -53,7 +51,6 @@
                         <input class="btn btn--sub btn--sm" type="submit" value="Add Comment" />
                     </form>
                     {% endif %}
-
                     <!-- Comments Section -->
                     {% if blog.comment_set %}
                     <div class="commentList">
@@ -80,5 +77,4 @@
         </div>
     </div>
 </main>
-
 {% endblock content %}
