@@ -14,14 +14,14 @@
   <script src="https://kit.fontawesome.com/14e8c0ae6a.js" crossorigin="anonymous"></script>
   <!-- Mumble UI -->
   <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
-  <!-- Dev Search UI -->
   <title>TechInferno - Connect by Projects</title>
 </head>
 
 <body>
   <!-- Navbar -->
   {% include 'navbar.html' %}
-  <!-- Navbar -->
+  <!-- End for Navbar -->
+
   <!-- MESSAGES -->
   {% if messages %}
   <div id="message___box">
@@ -33,9 +33,13 @@
     {% endfor %}
   </div>
   {% endif %}
-  <!-- END MESSAGES -->
+  <!-- END for MESSAGES -->
+
+  <!-- OTHER-PAGE CONTENTS -->
   {% block content %}
   {% endblock content %}
+  <!-- END FOR OTHER-PAGE CONTENTS -->
+
 </body>
 <!-- Main js -->
 <script src="{% static 'js/main.js' %}"></script>
