@@ -102,6 +102,25 @@ Blogs
   margin-left: 1rem;
 }
 
+
+@media screen and (max-width: 410px) {
+  .blog--header-single .left .avatar__img {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .blog--header .right a {
+    font-size: medium;
+    margin-left: 1rem;
+  }
+
+  .blog--header .left .project_title {
+    margin-left: 6px;
+    font-size: medium;
+  }
+}
+
+
 /* 
 ==========================
 BookMarks

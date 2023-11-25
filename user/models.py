@@ -14,7 +14,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=200, null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
     job_role = models.CharField(max_length=200, null=True, blank=True)
-    email = models.CharField(null=True, blank=True, max_length=150)
+    email = models.CharField(null=True, blank=True, max_length=150, unique=True)
     short_intro = models.CharField(null=True, blank=True, max_length=1000)
     bio = models.TextField(null=True, blank=True, max_length=2000)
     website = models.CharField(max_length=500, null=True, blank=True)

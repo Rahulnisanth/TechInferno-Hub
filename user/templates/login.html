@@ -22,8 +22,8 @@
         {% for error in field.errors %}
         <small style="color: red;">{{error}}</small>
         {% endfor %}
+        {% endif %}
       </div>
-      {% endif %}
       {% endfor %}
       <input style="margin: 1em 0 1.5em 0;" class="btn btn--sub btn--lg" type="submit" value="Register" />
     </form>

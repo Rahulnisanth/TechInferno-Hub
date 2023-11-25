@@ -46,7 +46,11 @@
                         {{field}}
                   </div>
                   {% endfor %}
-
+                  {% if field.errors %}
+                  {% for error in field.errors %}
+                  <small style="color: red;">{{error}}</small>
+                  {% endfor %}
+                  {% endif %}
                   <input class="btn btn--sub btn--lg  my-md" type="submit" value="Change my password" />
             </form>
       </div>

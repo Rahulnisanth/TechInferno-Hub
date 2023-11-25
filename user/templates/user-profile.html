@@ -139,14 +139,11 @@
                                                                   . .
                                                             </p>
                                                             <div class="blog--editables">
-                                                                  <a style="padding:1.2rem 1.2rem 1rem 1rem;"
+                                                                  <a class="tag tag--pill tag--main settings__btn"
+                                                                        href="{% url 'edit-blog' blog.id %}">Edit</a>
+                                                                  <a style=" position:relative; left: 210px;"
                                                                         class="tag tag--pill tag--main settings__btn"
-                                                                        href="{% url 'edit-blog' blog.id %}"><i
-                                                                              class="fa-solid fa-pen"></i></a>
-                                                                  <a style="padding:1.2rem 1.2rem 1rem 1rem; position:relative; left: 265px;"
-                                                                        class="tag tag--pill tag--main settings__btn"
-                                                                        href="{% url 'delete-blog' blog.id %}?next=/user-profile"><i
-                                                                              class="fa-solid fa-trash"></i></a>
+                                                                        href="{% url 'delete-blog' blog.id %}?next=/user-profile">Delete</a>
                                                             </div>
                                                       </div>
                                                 </a>
