@@ -1,4 +1,3 @@
-// static/js/search.js
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("formInput#search");
   const searchResultsContainer = document.getElementById(
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         searchResultsContainer.innerHTML = "";
         data.results.forEach((result) => {
-          // Create HTML structure for each search result
           const resultItem = document.createElement("div");
           resultItem.classList.add("search-result-item");
           resultItem.innerHTML = `

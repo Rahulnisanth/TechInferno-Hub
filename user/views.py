@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
@@ -26,7 +25,7 @@ def login_user(request):
             )
             return redirect("/")
         else:
-            messages.error(request, "Some Error has occurred, Please try again!")
+            messages.error(request, "Invalid username or password, Please try again!")
             return render(request, "login.html")
     return render(request, "login.html")
 

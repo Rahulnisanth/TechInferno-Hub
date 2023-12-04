@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .models import Profile, Skill
+from .models import *
 from django.db.models import Q
 
 
