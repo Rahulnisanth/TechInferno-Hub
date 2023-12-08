@@ -140,7 +140,6 @@ def inbox(request):
     profile = request.user.profile
     texts = profile.messages.all()
     unreadCount = texts.filter(is_read=False).count()
-    print(unreadCount)
     context = {"texts": texts, "unreadCount": unreadCount}
     return render(request, "inbox.html", context)
 
