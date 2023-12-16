@@ -20,9 +20,9 @@
                     <div class="right">
                         <a href="{% url 'like-blog' blog.id %}" style="text-decoration: none;">
                             {% if request.user.profile in blog.like.all %}
-                            <i class="fa-solid fa-heart"></i> {{ blog.like.count }} Upvotes
+                            <i class="fa-solid fa-circle-check"></i> {{ blog.like.count }}
                             {% else %}
-                            <i class="fa-regular fa-heart"></i> {{ blog.like.count }} Upvotes
+                            <i class="fa-regular fa-circle-check"></i> {{ blog.like.count }}
                             {% endif %}
                         </a>
                     </div>

@@ -71,6 +71,7 @@
                                           class="fa-solid fa-plus"></i> Add Skill</a>
                         </div>
                         <!-- SKILL-SET TABLE -->
+                        {% if profile.skill_set %}
                         <table class="settings__table">
                               {% for skill in profile.skill_set.all %}
                               <tr>
@@ -89,12 +90,14 @@
                               </tr>
                               {% endfor %}
                         </table>
+                        {% endif %}
                         <div class="settings">
                               <h3 class="settings__title">Projects</h3>
                               <a class="tag tag--pill tag--sub settings__btn tag--lg"
                                     href="{% url 'create-project' %}"><i class="fa-solid fa-plus"></i> Add Project</a>
                         </div>
                         <!-- PROJECT-SET TABLE -->
+                        {% if profile.project_set %}
                         <table class="settings__table">
                               {% for project in profile.project_set.all %}
                               <tr>
@@ -117,6 +120,7 @@
                               </tr>
                               {% endfor %}
                         </table>
+                        {% endif %}
                         <!-- BLOG_POST-SET TABLE -->
                         <div class="settings">
                               <h3 class="settings__title">Blog Posts</h3>
@@ -124,34 +128,31 @@
                                           class="fa-solid fa-plus"></i> Add
                                     Blog</a>
                         </div>
+                        {% if profile.blog_set %}
                         <br />
-                        <div class="devInfo">
-                              <div class="grid grid--two">
-                                    <!-- ======== PROJECTS-SECTION ======= -->
-                                    {% for blog in profile.blog_set.all %}
-                                    <div class="column">
-                                          <div class="card project">
-                                                <a href="{% url 'single-blog' blog.id %}" class="blog">
-                                                      <img class="blog__thumbnail" src="{{ blog.featured_image.url }}"
-                                                            alt="blog thumbnail" />
-                                                      <div class="card__body">
-                                                            <p class="blog__title">{{blog.description | slice:"110"}} .
-                                                                  . .
-                                                            </p>
-                                                            <div class="blog--editables">
-                                                                  <a class="tag tag--pill tag--main settings__btn"
-                                                                        href="{% url 'edit-blog' blog.id %}">Edit</a>
-                                                                  <a style=" position:relative; left: 210px;"
-                                                                        class="tag tag--pill tag--main settings__btn"
-                                                                        href="{% url 'delete-blog' blog.id %}?next=/user-profile">Delete</a>
-                                                            </div>
-                                                      </div>
-                                                </a>
-                                          </div>
-                                    </div>
-                                    {% endfor %}
-                              </div>
-                        </div>
+                        <table class="settings__table">
+                              {% for blog in profile.blog_set.all %}
+                              <tr>
+                                    <td class="settings__thumbnail">
+                                          <a href="{% url 'single-blog' blog.id %}"><img
+                                                      src="{{blog.featured_image.url}}" /></a>
+                                    </td>
+                                    <td class="settings__tableInfo">
+                                          <a href="{% url 'single-blog' blog.id %}">{{blog.title}}</a>
+                                          <p>
+                                                {{blog.description | slice:"110"}} . . .
+                                          </p>
+                                    </td>
+                                    <td class="settings__tableActions">
+                                          <a class="tag tag--pill tag--main settings__btn"
+                                                href="{% url 'edit-blog' blog.id %}">Edit</a>
+                                          <a class="tag tag--pill tag--main settings__btn"
+                                                href="{% url 'delete-blog' blog.id %}?next=/user-profile">Delete</a>
+                                    </td>
+                              </tr>
+                              {% endfor %}
+                        </table>
+                        {% endif %}
                   </div>
             </div>
       </div>

@@ -41,6 +41,7 @@ def createBlog(request):
             blog = blog_form.save(commit=False)
             blog.owner = profile
             blog.save()
+            messages.success(request, f"{blog.title} was posted successfully!")
             return redirect("blogs")
     context = {"form": blog_form}
     return render(request, "blog_form.html", context)
@@ -77,10 +78,7 @@ def likeBlog(request, pk):
         user = request.user.profile
         if user not in blog.like.all():
             blog.like.add(user)
-            messages.success(request, "You liked this blog!")
         else:
             blog.like.remove(user)
-            messages.error(request, "You Disliked this blog!")
-
         return redirect("single-blog", pk=pk)
     return render(request, "single-blog.html")

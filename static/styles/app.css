@@ -711,10 +711,6 @@ img {
   font-size: 18px;
 }
 
-.blog--editables {
-  display: inline-flex;
-  margin-top: 1rem;
-}
 
 .comments {
   margin-top: 4rem;
