@@ -1,20 +1,8 @@
 
-venv/
+venv
 db.sqlite3
-manage.py
-media/
-projects/__pycache__/
-projects/migrations/
-projects/__init__.py
-user/__pycache__/
-user/migrations/
-user/__init__.py
-ProjectCaster/__pycache__/
-ProjectCaster/__init__.py
-ProjectCaster/asgi.py
-ProjectCaster/settings.py
-ProjectCaster/wsgi.py
-API/__pycache__/
-API/__init__.py
-blogs/__pycache__/
-blogs/migrations/
+media
+
+*/__pycache__
+*/migrations
+*/__init__.py

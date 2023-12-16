@@ -47,6 +47,7 @@ def createBlog(request):
     return render(request, "blog_form.html", context)
 
 
+@login_required(login_url="login_user")
 def editBlog(request, pk):
     profile = request.user.profile
     blog = profile.blog_set.get(id=pk)
@@ -61,6 +62,7 @@ def editBlog(request, pk):
     return render(request, "blog_form.html", context)
 
 
+@login_required(login_url="login_user")
 def deleteBlog(request, pk):
     profile = request.user.profile
     blog = profile.blog_set.get(id=pk)
@@ -72,6 +74,7 @@ def deleteBlog(request, pk):
     return render(request, "delete-blog.html", context)
 
 
+@login_required(login_url="login_user")
 def likeBlog(request, pk):
     blog = Blog.objects.get(id=pk)
     if request.method == "GET":
