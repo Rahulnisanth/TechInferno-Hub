@@ -30,6 +30,7 @@ def login_user(request):
     return render(request, "login.html")
 
 
+@login_required(login_url="login_user")
 def logout_user(request):
     logout(request)
     messages.info(request, "Your account has logged-out successfully!")
@@ -144,6 +145,7 @@ def inbox(request):
     return render(request, "inbox.html", context)
 
 
+@login_required(login_url="login_user")
 def messageInbox(request, pk):
     text = Message.objects.get(id=pk)
     sender = Profile.objects.get(username=text.sender)
@@ -154,6 +156,7 @@ def messageInbox(request, pk):
     return render(request, "message.html", context)
 
 
+@login_required(login_url="login_user")
 def messageForm(request, pk):
     receiver = Profile.objects.get(id=pk)
     form = MessageForm()

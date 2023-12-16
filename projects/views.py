@@ -103,6 +103,7 @@ def download_documentation(request, pk):
     return FileResponse(open(file_path, "rb"), as_attachment=True)
 
 
+@login_required(login_url="login_user")
 def updateProject(request, pk):
     profile = request.user.profile
     project = profile.project_set.get(id=pk)
@@ -121,6 +122,7 @@ def updateProject(request, pk):
     return render(request, "project_form.html", context)
 
 
+@login_required(login_url="login_user")
 def deleteProject(request, pk):
     profile = request.user.profile
     project = profile.project_set.get(id=pk)

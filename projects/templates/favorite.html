@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
 <!-- Main Section -->
+<style>
+    .project--rating i {
+        padding-right: .5rem !important;
+    }
+</style>
 <main class="projects">
     <section class="projectsList">
         <div class="container">
@@ -12,14 +17,36 @@
                         <a href="{% url 'single-project' project.id %}" class="project">
                             <img class="project__thumbnail" src="{{project.ImageURL}}" alt="project thumbnail" />
                             <div class="card__body">
-                                <a href="{% url 'add-favorite' project.id %}"><i class="fa-solid fa-bookmark"></i></a>
+
+                                <div class="bookmark">
+                                    <div>
+                                        <span style="font-size: 13px;text-decoration: none;"><i
+                                                class="fa-solid fa-eye"></i>
+                                            {{project.view_count}} Views</span>
+                                    </div>
+                                    <div>
+                                        <a href="{% url 'add-favorite' project.id %}">
+                                            {% if user in project.favorite.all %}
+                                            <i class="fa-solid fa-bookmark"></i>
+                                            {% else %}
+                                            <i class="fa-regular fa-bookmark"></i>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+
                                 <p><a class="project__author" href="{% url 'single-profile' project.owner.id %}">By
                                         {{project.owner}} &#8594;</a></p>
                                 <h3 class="project__title">{{project.domain}}</h3>
                                 <p>{{project.title}}</p>
                                 <p class="project--rating">
-                                    <span style="font-weight: bold;">{{project.vote_total}}</span>
-                                    Endorsement{{project.vote_total|pluralize}}
+                                    <a href="{% url 'add-like' project.id %}">
+                                        {% if user.profile in project.like.all %}
+                                        <i class="fa-solid fa-circle-check"></i>{{project.like.count}} Endorsements
+                                        {% else %}
+                                        <i class="fa-regular fa-circle-check"></i>{{project.like.count}} Endorsements
+                                        {% endif %}
+                                    </a>
                                 </p>
                                 <div class="project__tags">
                                     {% for tag in project.tags.all|slice:":3" %}

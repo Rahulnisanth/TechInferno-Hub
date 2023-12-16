@@ -11,7 +11,6 @@ class Blog(models.Model):
     featured_image = models.ImageField(
         null=True, blank=True, default="images/default.png", upload_to="blog_images/"
     )
-    like_count = models.IntegerField(default=0)
     like = models.ManyToManyField(Profile, related_name="blog_like")
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(

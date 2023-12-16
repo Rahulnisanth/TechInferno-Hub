@@ -3,11 +3,17 @@ from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .utils import *
 
 
 def blogs(request):
-    blogs = Blog.objects.all()
-    context = {"blogs": blogs}
+    blogs, search_query = SearchBlogs(request)
+    custom_range, blogs = paginateBlogs(request, blogs, 9)
+    context = {
+        "blogs": blogs,
+        "search_query": search_query,
+        "custom_range": custom_range,
+    }
     return render(request, "blogs.html", context)
 
 

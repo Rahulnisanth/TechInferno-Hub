@@ -1,6 +1,27 @@
 {% extends 'index.html' %}
 {% block content %}
 <main>
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2><span>ONGOING </span> INNOVATIONS
+                </h2>
+                <h2>COMES UNDER <span>BLOGPAGE</span>
+                </h2>
+            </div>
+            <div class="hero-section__search">
+                <form id="searchForm" class="form" action="" method="GET">
+                    {% csrf_token %}
+                    <div class="form__field">
+                        <label for="formInput#search">Search Blog posts </label>
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                            value="{{search_query}}" placeholder="Search Blog posts" />
+                    </div>
+                    <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+                </form>
+            </div>
+        </div>
+    </section>
     <section class="projectsList">
         <div class="container">
             <div class="total-grid">
@@ -23,7 +44,7 @@
                                                 {{blog.owner}}</a>
                                         </div>
                                     </div>
-                                    <p>{{blog.description | slice:"80"}} . . .</p>
+                                    <p>{{blog.description | slice:"115"}} . . .</p>
                                     <div style="padding: 1rem 0 1rem 0;" class="created">
                                         <span style="color: var(--color-main); font-size: small;">
                                             <small>{{blog.created}}</small>
@@ -37,7 +58,7 @@
                 </div>
             </div>
         </div>
-        {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
+        {% include 'pagination.html' with queryset=blogs custom_range=custom_range %}
     </section>
 </main>
 {% endblock content %}
