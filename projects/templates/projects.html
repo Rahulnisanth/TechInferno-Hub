@@ -3,8 +3,8 @@
 {% block content %}
 <!-- Main Section -->
 <style>
-  i {
-    padding: .1rem .3rem;
+  .project--rating i {
+    padding-right: .5rem !important;
   }
 </style>
 <main class="projects">
@@ -61,9 +61,9 @@
                 <p class="project--rating">
                   <a href="{% url 'add-like' project.id %}">
                     {% if user.profile in project.like.all %}
-                    <i class="fa-solid fa-heart"></i>{{project.like.count}} Endorsements
+                    <i class="fa-solid fa-circle-check"></i>{{project.like.count}} Endorsements
                     {% else %}
-                    <i class="fa-regular fa-heart"></i>{{project.like.count}} Endorsements
+                    <i class="fa-regular fa-circle-check"></i>{{project.like.count}} Endorsements
                     {% endif %}
                   </a>
                 </p>

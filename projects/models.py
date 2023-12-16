@@ -46,12 +46,7 @@ class Project(models.Model):
         reviewers = self.review_set.all().values_list("owner__id", flat=True)
         return reviewers
 
-    @property
-    def getVotetotal(self):
-        reviews = self.review_set.all()
-        upVotes = reviews.filter(value="up").count()
-        self.vote_total = upVotes
-        self.save()
+
 
 
 class Review(models.Model):
@@ -64,7 +59,7 @@ class Review(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.value
+        return str(self.project)
 
     class Meta:
         unique_together = [["owner", "project"]]

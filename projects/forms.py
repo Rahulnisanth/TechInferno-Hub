@@ -33,7 +33,7 @@ class ReviewForm(ModelForm):
         model = Review
         fields = ["body"]
         labels = {
-            "body": "Add your comment with an endorsement :",
+            "body": "Add your comments for the above project :",
         }
         widgets = {
             "body": forms.Textarea(attrs={"rows": 5, "cols": 5}),
