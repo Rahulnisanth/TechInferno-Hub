@@ -15,9 +15,6 @@ class ProjectForm(ModelForm):
             "project_documentation",
             "source_link",
         ]
-        widgets = {
-            "tags": forms.CheckboxSelectMultiple(),
-        }
 
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
@@ -34,14 +31,11 @@ class ProjectForm(ModelForm):
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
-        fields = ["value", "body"]
-
+        fields = ["body"]
         labels = {
-            "value": "Place your votes here :",
             "body": "Add your comment with an endorsement :",
         }
         widgets = {
-            "value": forms.RadioSelect(),
             "body": forms.Textarea(attrs={"rows": 5, "cols": 5}),
         }
 

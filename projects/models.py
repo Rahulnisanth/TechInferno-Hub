@@ -18,6 +18,7 @@ class Project(models.Model):
         null=True, blank=True, upload_to="project__docs/"
     )
     favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
+    like = models.ManyToManyField(Profile, related_name="like_count")
     tags = models.ManyToManyField("Tag", blank=True)
     vote_total = models.IntegerField(default=0, blank=True, null=True)
     view_count = models.PositiveIntegerField(default=0)
@@ -54,16 +55,9 @@ class Project(models.Model):
 
 
 class Review(models.Model):
-    VOTE_TYPE = (
-        ("up", "Endorse Project"),
-        ("down", "De-endorse Project"),
-    )
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
-    value = models.CharField(
-        max_length=200, default=None, blank=False, choices=VOTE_TYPE
-    )
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, primary_key=True, editable=False

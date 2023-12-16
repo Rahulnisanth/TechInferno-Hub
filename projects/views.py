@@ -65,6 +65,19 @@ def singleProject(request, pk):
 
 
 @login_required(login_url="login_user")
+def addLike(request, pk):
+    project = Project.objects.get(id=pk)
+    if request.method == "POST" or request.method == "GET":
+        user = request.user.profile
+        if user not in project.like.all():
+            project.like.add(user)
+        else:
+            project.like.remove(user)
+        return redirect("projects")
+    return render(request, "projects.html")
+
+
+@login_required(login_url="login_user")
 def createProject(request):
     profile = request.user.profile
     project_form = ProjectForm(instance=profile)

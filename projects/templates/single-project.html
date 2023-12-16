@@ -49,14 +49,11 @@
         <!-- Comments Starter -->
         <div class="comments">
           <h3 class="singleProject__subtitle">Feedback</h3>
-          <h5 class="project--rating">
-            {{project.vote_total}} Endorsements
-          </h5>
           <!-- REVIEW-SECTION -->
           {% if request.user.profile.id in project.reviewers %}
-          <p class="devote__text">Hurray! You have already voted your review for this project.</p>
+          <p class="devote__text">Hurray! You have already commented your review for this project.</p>
           {% elif request.user.profile == project.owner %}
-          <p class="devote__text">OOPs! You can't vote for your own project.</p>
+          <p class="devote__text">OOPs! You can't comment for your own project.</p>
           {% else %}
           <form class="form" action="" method="POST">
             {% csrf_token %}

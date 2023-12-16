@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
 <!-- Main Section -->
+<style>
+  i {
+    padding: .1rem .3rem;
+  }
+</style>
 <main class="projects">
   <section class="hero-section text-center">
     <div class="container container--narrow">
@@ -39,11 +44,13 @@
                       {{project.view_count}} Views</span>
                   </div>
                   <div>
-                    {% if user in project.favorite.all %}
-                    <a href="{% url 'add-favorite' project.id %}"><i class="fa-solid fa-bookmark"></i></a>
-                    {% else %}
-                    <a href="{% url 'add-favorite' project.id %}"><i class="fa-regular fa-bookmark"></i></a>
-                    {% endif %}
+                    <a href="{% url 'add-favorite' project.id %}">
+                      {% if user in project.favorite.all %}
+                      <i class="fa-solid fa-bookmark"></i>
+                      {% else %}
+                      <i class="fa-regular fa-bookmark"></i>
+                      {% endif %}
+                    </a>
                   </div>
                 </div>
 
@@ -52,8 +59,13 @@
                 <h3 class="project__title">{{project.domain}}</h3>
                 <p>{{project.title}}</p>
                 <p class="project--rating">
-                  <span style="font-weight: bold;">{{project.vote_total}}</span>
-                  Endorsement{{project.vote_total|pluralize}}
+                  <a href="{% url 'add-like' project.id %}">
+                    {% if user.profile in project.like.all %}
+                    <i class="fa-solid fa-heart"></i>{{project.like.count}} Endorsements
+                    {% else %}
+                    <i class="fa-regular fa-heart"></i>{{project.like.count}} Endorsements
+                    {% endif %}
+                  </a>
                 </p>
                 <div class="project__tags">
                   {% for tag in project.tags.all|slice:":3" %}
