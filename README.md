@@ -1,4 +1,4 @@
-<h1 align="center">ProjectCasting Site integrated with ChatBot</h1>
+<h1 align="center">TechInferno Hub - The Project posting profile booster site </h1>
 
 ###
 
