@@ -114,7 +114,7 @@ def updateProject(request, pk):
         if project_form.is_valid():
             project_form.save()
             for tag in newtags:
-                tag, created = Tag.objects.get_or_create(name=tag), True
+                tag, created = Tag.objects.get_or_create(name=tag)
                 project.tags.add(tag)
             messages.success(request, "Your Project was updated Successfully!")
             return redirect("projects")

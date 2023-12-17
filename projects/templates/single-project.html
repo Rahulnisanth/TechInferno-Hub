@@ -15,28 +15,28 @@
           {% endfor %}
         </div>
 
-        {% if project.demo_link %}
+        {% if project.source_link %}
         <a class="singleProject__liveLink" href="{{project.source_link}}" target="_blank"><i
-            class="fa-solid fa-square-arrow-up-right"></i>Visit project
+            class="fa-solid fa-code-branch"></i>GitRepos
         </a>
         {% endif %}
         <br />
-        {% if project.source_link %}
+        {% if project.demo_link %}
         <a class="singleProject__liveLink" href="{{project.source_link}}" target="_blank"><i
-            class="fa-solid fa-code-branch"></i>Repository Link
+            class="fa-solid fa-square-arrow-up-right"></i>Live Demo
         </a>
         {% endif %}
         <br />
         {% if project.project_documentation %}
         <a class="singleProject__liveLink" href="{% url 'download-documentation' project.id %}" target="_blank"><i
-            class="fa-solid fa-circle-down"></i>Download Documentation
+            class="fa-solid fa-gear"></i>Project Docs
         </a>
         {% endif %}
       </div>
       <div class="column column--2of3">
         <img class="singleProject__preview" src="{{project.ImageURL}}" alt="portfolio thumbnail" />
-        <a href="{% url 'single-profile' project.owner.id %}" class="singleProject__developer"> Hosted by <i
-            class="fa-solid fa-hashtag"></i>
+        <a href="{% url 'single-profile' project.owner.id %}" class="singleProject__developer"><i
+            class="fa-solid fa-code"></i>
           {{project.owner}}</a>
 
         <h2 class="singleProject__title">{{project.title}}</h2>

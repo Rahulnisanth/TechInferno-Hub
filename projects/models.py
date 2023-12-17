@@ -20,7 +20,6 @@ class Project(models.Model):
     favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     like = models.ManyToManyField(Profile, related_name="like_count")
     tags = models.ManyToManyField("Tag", blank=True)
-    vote_total = models.IntegerField(default=0, blank=True, null=True)
     view_count = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
@@ -39,14 +38,12 @@ class Project(models.Model):
         return url
 
     class Meta:
-        ordering = ["-vote_total", "title"]
+        ordering = ["-view_count"]
 
     @property
     def reviewers(self):
         reviewers = self.review_set.all().values_list("owner__id", flat=True)
         return reviewers
-
-
 
 
 class Review(models.Model):
