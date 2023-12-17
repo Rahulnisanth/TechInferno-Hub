@@ -6,8 +6,6 @@ from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .utils import SearchProfiles, paginateProfiles
-from django.contrib.sessions.models import Session
-from django.utils import timezone
 
 
 def login_user(request):

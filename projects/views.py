@@ -3,12 +3,9 @@ from projects.utils import SearchProjects, paginateProjects
 from .models import *
 from .forms import *
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.http import FileResponse
-from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 
 def projects(request):
