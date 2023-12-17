@@ -17,13 +17,13 @@ class Blog(models.Model):
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
     )
 
-    def __str__(self) -> str:
-        return self.title
-
     @property
     def reviewers(self):
         reviewers = self.comment_set.all().values_list("owner__id", flat=True)
         return reviewers
+
+    def __str__(self) -> str:
+        return str(self.title)
 
 
 class Comment(models.Model):
@@ -35,8 +35,8 @@ class Comment(models.Model):
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
     )
 
-    def __str__(self) -> str:
-        return str(self.blog)
-
     class Meta:
         unique_together = [["owner", "blog"]]
+
+    def __str__(self) -> str:
+        return str(self.blog)

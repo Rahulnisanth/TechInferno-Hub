@@ -26,8 +26,13 @@ class Project(models.Model):
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
     )
 
-    def __str__(self) -> str:
-        return self.title
+    class Meta:
+        ordering = ["-view_count"]
+
+    @property
+    def reviewers(self):
+        reviewers = self.review_set.all().values_list("owner__id", flat=True)
+        return reviewers
 
     @property
     def ImageURL(self):
@@ -37,13 +42,8 @@ class Project(models.Model):
             url = "media/images/default.png"
         return url
 
-    class Meta:
-        ordering = ["-view_count"]
-
-    @property
-    def reviewers(self):
-        reviewers = self.review_set.all().values_list("owner__id", flat=True)
-        return reviewers
+    def __str__(self) -> str:
+        return str(self.title)
 
 
 class Review(models.Model):
@@ -55,11 +55,11 @@ class Review(models.Model):
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
     )
 
-    def __str__(self) -> str:
-        return str(self.project)
-
     class Meta:
         unique_together = [["owner", "project"]]
+
+    def __str__(self) -> str:
+        return str(self.project)
 
 
 class Tag(models.Model):
@@ -70,7 +70,7 @@ class Tag(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.name
+        return str(self.name)
 
 
 class ProjectView(models.Model):
@@ -83,4 +83,4 @@ class ProjectView(models.Model):
         unique_together = ("post", "session_key", "ip_address")
 
     def __str__(self) -> str:
-        return self.session_key
+        return str(self.session_key)
