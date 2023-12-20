@@ -1,4 +1,4 @@
-<h1 align="center">TechInferno Hub - Projects based profile boosting platform</h1>
+<h1 align="center">TechInferno Hub <br> Projects based profile boosting platform</h1>
 
 ###
 
