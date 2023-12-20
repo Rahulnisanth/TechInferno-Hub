@@ -1,8 +1,8 @@
-
+#Main folders
 venv
 db.sqlite3
 media
-
+#Sub-Files
 */__pycache__
 */migrations
 */__init__.py
