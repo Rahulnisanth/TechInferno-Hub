@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <h1 align="center">TechInferno Hub - Projects based profile boosting platform</h1>
-=======
-<h1 align="center">TechInferno Hub - The Project posting profile booster site </h1>
->>>>>>> 896b944d3bd75a7ace97fb58306f9708771397d1
 
 ###
 
