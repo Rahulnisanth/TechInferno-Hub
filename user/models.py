@@ -40,7 +40,7 @@ class Profile(models.Model):
         return url
 
     class Meta:
-        ordering = ["-created"]
+        ordering = ["username"]
 
 
 class Skill(models.Model):

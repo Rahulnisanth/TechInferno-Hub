@@ -48,7 +48,7 @@ def registerUser(request):
                 f"Hello {user.username}!,Your account has been registered successfully!",
             )
             login(request, user)
-            return redirect("/")
+            return redirect("user-profile")
     context = {"flag": flag, "form": form}
     return render(request, "login.html", context)
 
