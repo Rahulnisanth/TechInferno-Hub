@@ -24,7 +24,6 @@ class BlogForm(ModelForm):
                 {
                     "class": "input",
                     "placeholder": f"Add blog's {name} here",
-                    "required": True,
                 }
             )
 

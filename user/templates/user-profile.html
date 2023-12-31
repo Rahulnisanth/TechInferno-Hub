@@ -1,5 +1,11 @@
 {% extends 'index.html' %}
 {% block content %}
+<style>
+      .tag i,
+      .settings i {
+            margin-left: .7rem;
+      }
+</style>
 <main class="settingsPage profile my-md">
       <div class="container">
             <div class="layout">
@@ -7,7 +13,7 @@
                         <div class="card text-center">
                               <div class="card__body dev">
                                     <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-profile' %}">
-                                          Edit <i class="fa-solid fa-pen"></i></a>
+                                          Profile<i class="fa-solid fa-pen"></i></a>
                                     <img class="avatar avatar--xl dev__avatar" src="{{profile.ImageURL}}" />
                                     <h2 class="dev__name">{{profile.username}}</h2>
                                     <p class="dev__title">{{profile.job_role}}</p>
@@ -67,8 +73,8 @@
                         </div>
                         <div class="settings">
                               <h3 class="settings__title">Skills</h3>
-                              <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'add-skill' %}"> <i
-                                          class="fa-solid fa-plus"></i> Add Skill</a>
+                              <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'add-skill' %}"> Add
+                                    Skill <i class="fa-solid fa-plus"></i></a>
                         </div>
                         <!-- SKILL-SET TABLE -->
                         {% if profile.skill_set %}
@@ -93,8 +99,8 @@
                         {% endif %}
                         <div class="settings">
                               <h3 class="settings__title">Projects</h3>
-                              <a class="tag tag--pill tag--sub settings__btn tag--lg"
-                                    href="{% url 'create-project' %}"><i class="fa-solid fa-plus"></i> Add Project</a>
+                              <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-project' %}">
+                                    Add Project <i class="fa-solid fa-plus"></i></a>
                         </div>
                         <!-- PROJECT-SET TABLE -->
                         {% if profile.project_set %}
@@ -124,9 +130,9 @@
                         <!-- BLOG_POST-SET TABLE -->
                         <div class="settings">
                               <h3 class="settings__title">Blog Posts</h3>
-                              <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-blog' %}"><i
-                                          class="fa-solid fa-plus"></i> Add
-                                    Blog</a>
+                              <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-blog' %}">
+                                    Add
+                                    Blog <i class="fa-solid fa-plus"></i></a>
                         </div>
                         {% if profile.blog_set %}
                         <br />
