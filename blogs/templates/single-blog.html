@@ -10,11 +10,10 @@
                 <div class="blog--header">
                     <div class="left">
                         <a href="{% url 'single-profile' blog.owner.id %}">
-                            <img style="height: 4.5rem;width: 4.5rem;" class="avatar avatar__md"
+                            <img style="height: 4rem;width: 4rem;" class="avatar avatar__md"
                                 src="{{blog.owner.profile_picture.url}}" alt="user" />
                         </a>
-                        <a class="project_title" style="font-size: x-large;"
-                            href="{% url 'single-profile' blog.owner.id %}">
+                        <a class="project_title" href="{% url 'single-profile' blog.owner.id %}">
                             {{blog.owner}}</a>
                     </div>
                     <div class="right">
@@ -27,7 +26,7 @@
                         </a>
                     </div>
                 </div>
-                <h2 class="singleProject__title"><i class="fa-solid fa-code"></i> {{blog.title}}</h2>
+                <h2 class="singleProject__title">{{blog.title}}</h2>
                 <h3 style="margin-top: -10px;" class="singleProject__subtitle"> Blog Description </h3>
                 <div class="singleProject__info">
                     {{blog.description | linebreaksbr}}
