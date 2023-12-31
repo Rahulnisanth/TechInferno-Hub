@@ -12,6 +12,7 @@ class Project(models.Model):
     featured_image = models.ImageField(
         null=True, blank=True, default="images/default.png", upload_to="images/"
     )
+    video = models.FileField(upload_to="videos/", blank=True, null=True)
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)
     project_documentation = models.FileField(

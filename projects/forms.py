@@ -7,10 +7,11 @@ class ProjectForm(ModelForm):
     class Meta:
         model = Project
         fields = [
+            "featured_image",
             "domain",
             "title",
             "description",
-            "featured_image",
+            "video",
             "demo_link",
             "project_documentation",
             "source_link",

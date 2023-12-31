@@ -613,8 +613,14 @@ img {
   object-position: center;
 }
 
+.singleProject__video {
+  width: 100%;
+  margin-bottom: 3rem;
+  border-radius: 0.7rem;
+
+}
+
 .singleProject__preview {
-  /* height: 50vh; */
   object-fit: cover;
   object-position: center;
   margin-bottom: 3rem;
