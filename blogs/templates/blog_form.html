@@ -7,6 +7,11 @@
             <br>
             <form class="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                <div class="profile__preview">
+                    <img style="max-width: 100% !important;" id="image-preview" src="{% if form.instance.featured_image %}
+                                    {{ form.instance.featured_image.url }}
+                                    {% endif %}" alt="Image Preview">
+                </div>
                 {% for field in form %}
                 <div class="form__field">
                     <label for="formInput#text">{{field.label}}</label>

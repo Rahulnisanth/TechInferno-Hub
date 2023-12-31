@@ -4,12 +4,16 @@ from .models import *
 
 
 class BlogForm(ModelForm):
+    featured_image = forms.FileField(
+        widget=forms.FileInput(attrs={"onchange": "previewImage(this)"})
+    )
+
     class Meta:
         model = Blog
         fields = [
+            "featured_image",
             "title",
             "description",
-            "featured_image",
         ]
 
     def __init__(self, *args, **kwargs):
