@@ -4,6 +4,10 @@ from .models import *
 
 
 class ProjectForm(ModelForm):
+    featured_image = forms.FileField(
+        widget=forms.FileInput(attrs={"onchange": "previewImage(this)"})
+    )
+
     class Meta:
         model = Project
         fields = [
@@ -11,10 +15,9 @@ class ProjectForm(ModelForm):
             "domain",
             "title",
             "description",
-            "video",
             "demo_link",
-            "project_documentation",
             "source_link",
+            "video",
         ]
 
     def __init__(self, *args, **kwargs):

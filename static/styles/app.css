@@ -780,6 +780,7 @@ img {
 ========================*/
 
 .settingsPage .dev>.settings__btn {
+  padding-top: .6rem;
   display: inline-block;
   margin-bottom: 3rem;
 }

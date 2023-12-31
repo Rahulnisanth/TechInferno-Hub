@@ -1,5 +1,21 @@
 {% extends 'index.html' %}
 {% block content %}
+<style>
+      .profile__preview {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      }
+
+      #image-preview {
+            border-radius: 50%;
+            border: 2px solid var(--color-main);
+            object-fit: cover;
+            height: 20rem;
+            width: 20rem;
+      }
+</style>
 <main class="formPage my-xl">
       <div class="content-box">
             <div class="formWrapper">
@@ -8,6 +24,13 @@
                   <form class="form" method="POST" enctype="multipart/form-data">
                         <!-- Input:Text -->
                         {% csrf_token %}
+                        <div class="profile__preview">
+                              <img id="image-preview" src="{% if form.instance.profile_picture %}
+                                    {{ form.instance.profile_picture.url }}
+                                    {% else %}
+                                    {{profile.ImageUrl}}
+                                    {% endif %}" alt="Image Preview">
+                        </div>
                         {% for field in form %}
                         <div class="form__field">
                               <label for="formInput#text">{{field.label}}</label>

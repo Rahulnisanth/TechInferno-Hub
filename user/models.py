@@ -8,7 +8,7 @@ class Profile(models.Model):
     profile_picture = models.ImageField(
         null=True,
         blank=True,
-        default="images/default__profile.png",
+        default="images/default-profile.png",
         upload_to="profile__picture/",
     )
     username = models.CharField(max_length=200, null=True, blank=True)
@@ -36,7 +36,7 @@ class Profile(models.Model):
         try:
             url = self.profile_picture.url
         except:
-            url = "media/images/default__profile.png"
+            url = "static/images/default-profile.png"
         return url
 
     class Meta:
