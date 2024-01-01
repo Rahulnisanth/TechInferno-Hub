@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
 <main class="formPage my-xl">
       <div class="content-box">
@@ -11,7 +12,9 @@
                         <div class="profile__preview">
                               <img style="max-width: 100% !important;" id="image-preview" src="{% if form.instance.featured_image %}
                                     {{ form.instance.featured_image.url }}
-                                    {% endif %}" alt="Image Preview">
+                              {% else %}
+                                    {% static 'images/default__blog.jpg' %}
+                              {% endif %}" alt="Image Preview">
                         </div>
                         {% for field in form %}
                         <div class="form__field">
@@ -35,6 +38,21 @@
                         </div>
                         <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
                   </form>
+                  <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                              const inputFile = document.querySelector('input[type="file"]');
+                              const imagePreview = document.getElementById('image-preview');
+                              if (inputFile && imagePreview) {
+                                    inputFile.addEventListener('change', function () {
+                                          previewImage(this, imagePreview);
+                                    });
+                              }
+
+                              if (imagePreview) {
+                                    previewImage(inputFile, imagePreview);
+                              }
+                        });
+                  </script>
             </div>
       </div>
 </main>

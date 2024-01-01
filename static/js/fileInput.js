@@ -12,6 +12,7 @@ document
       reader.readAsDataURL(file);
     } else {
       preview.src =
-        "{% if form.instance.profile_picture %}{{ form.instance.profile_picture.url }}{% else %}{% static 'images/default-profile.png' %}{% endif %}";
+        "{% if form.instance.profile_picture %}{{ form.instance.profile_picture.url }}{% endif %}";
     }
+    console.log(preview.src);
   });

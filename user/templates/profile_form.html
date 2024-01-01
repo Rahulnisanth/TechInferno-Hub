@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
 <style>
       .profile__preview {
@@ -28,7 +29,7 @@
                               <img id="image-preview" src="{% if form.instance.profile_picture %}
                                     {{ form.instance.profile_picture.url }}
                                     {% else %}
-                                    {{profile.ImageUrl}}
+                                    {% static 'images/default__profile.png' %}
                                     {% endif %}" alt="Image Preview">
                         </div>
                         {% for field in form %}
@@ -39,6 +40,21 @@
                         {% endfor %}
                         <input class="btn btn--sub btn--lg  my-md" type="submit" value="Save Changes" />
                   </form>
+                  <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                              const inputFile = document.querySelector('input[type="file"]');
+                              const imagePreview = document.getElementById('image-preview');
+                              if (inputFile && imagePreview) {
+                                    inputFile.addEventListener('change', function () {
+                                          previewImage(this, imagePreview);
+                                    });
+                              }
+
+                              if (imagePreview) {
+                                    previewImage(inputFile, imagePreview);
+                              }
+                        });
+                  </script>
             </div>
       </div>
 </main>

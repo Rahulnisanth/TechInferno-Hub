@@ -40,7 +40,7 @@ class Project(models.Model):
         try:
             url = self.featured_image.url
         except:
-            url = "media/images/default.png"
+            url = "static/images/default__blog.jpg"
         return url
 
     def __str__(self) -> str:
