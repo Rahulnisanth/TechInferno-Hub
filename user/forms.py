@@ -30,7 +30,6 @@ class ProfileForm(ModelForm):
     profile_picture = forms.FileField(
         widget=forms.FileInput(attrs={"onchange": "previewImage(this)"})
     )
-
     class Meta:
         model = Profile
         fields = [

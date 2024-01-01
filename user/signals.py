@@ -16,10 +16,10 @@ def createProfile(sender, instance, created, **kwargs):
             email=user.email,
         )
         # Email config ->
-        subject = "Welcome to TechInferno - Where Innovation Meets Excellence!"
+        subject = "Welcome to TechInferno Hub - Where Innovation Meets Excellence!"
         message = f"""Dear {profile.username},
 
-Greetings from the TechInferno team! We are thrilled to welcome you to our dynamic community dedicated to showcasing groundbreaking projects and cutting-edge techWorks. As a passionate advocate for innovation and technological advancements, we are excited to have you on board.
+Greetings from the TechInferno Hub team! We are thrilled to welcome you to our dynamic community dedicated to showcasing groundbreaking projects and cutting-edge techWorks. As a passionate advocate for innovation and technological advancements, we are excited to have you on board.
 
 At TechInferno, we believe in the power of ideas and the impact they can have on the world. Whether you're a seasoned professional, a budding enthusiast, or someone with a keen interest in the latest technological marvels, our platform is designed to inspire, connect, and elevate your experience.
 

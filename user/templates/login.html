@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="auth">
+  <!-- REGISTER TEMPLATE -->
   {% if flag == 'register' %}
   <div class="card">
     <div class="auth__header text-center">
@@ -11,7 +12,7 @@
       <h3>Register Account</h3>
       <p>Hello Developer, Welcome !</p>
     </div>
-    <!-- Form Template ================================================= -->
+
     <form method="POST" action="" enctype="multipart/form-data">
       {% csrf_token %}
       {% for field in form %}
@@ -27,13 +28,13 @@
       {% endfor %}
       <input style="margin: 1em 0 1.5em 0;" class="btn btn--sub btn--lg" type="submit" value="Register" />
     </form>
-    <!-- Form Template End -->
+
     <div class="auth__alternative">
       <p>Already have an Account?</p>
       <a href="{% url 'login_user' %}">Login here!</a>
     </div>
   </div>
-  {% else %} <!-- Else condition ============================================= -->
+  {% else %} <!-- LOGIN TEMPLATE ============================================= -->
   <div class="card">
     <div class="auth__header text-center">
       <a href="/">

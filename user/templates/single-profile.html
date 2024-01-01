@@ -31,30 +31,26 @@
                     class="fa-brands fa-stack-overflow"></i></a>
               </li>
               {% endif %}
-
               {% if profile.linkedin %}
               <li>
                 <a title="Linkedin" href="{{profile.linkedin}}" target="_blank"><i
                     class="fa-brands fa-linkedin"></i></a>
               </li>
               {% endif %}
-
               {% if profile.twitter %}
               <li>
                 <a title="Twitter" href="{{profile.twitter}}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
               </li>
               {% endif %}
-
               {% if profile.website %}
               <li>
                 <a title="Personal Website" href="{{profile.website}}" target="_blank"><i
                     class="fa-solid fa-globe"></i></a>
               </li>
               {% endif %}
-
             </ul>
             {% if request.user.profile.id != profile.id %}
-            <a href="{% url 'message-form' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
+            <a href="{% url 'message-form' profile.id %}" class="btn btn--sub btn--lg">Messenger</a>
             {% endif %}
 
           </div>
@@ -64,7 +60,7 @@
         <div class="devInfo">
           <h3 class="devInfo__title">About Me</h3>
           <p class="devInfo__about">
-            <i class="fa-solid fa-hashtag"></i> {{profile.short_intro}}
+            <i class="fa-solid fa-hashtag"></i>&nbsp;{{profile.short_intro}}
             <br />
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{profile.bio|linebreaksbr}}

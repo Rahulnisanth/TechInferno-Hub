@@ -56,7 +56,7 @@
                                     </ul>
                                     <div class="buttonz">
                                           <a id="first" href="{% url 'favorite-list' %}"
-                                                class="btn btn--sm">Favorites</a>
+                                                class="btn btn--sm">Bookmarks</a>
                                           <a href="{% url 'inbox' %}" class="btn btn--sm">Messages</a>
                                     </div>
                               </div>
@@ -66,7 +66,7 @@
                         <div class="devInfo">
                               <h3 class="devInfo__title">About Me</h3>
                               <p class="devInfo__about">
-                                    <i class="fa-solid fa-hashtag"></i> {{profile.short_intro}}
+                                    <i class="fa-solid fa-hashtag"></i>&nbsp;{{profile.short_intro}}
                                     <br />
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{profile.bio|linebreaksbr}}
