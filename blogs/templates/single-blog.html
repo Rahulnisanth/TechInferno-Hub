@@ -19,9 +19,9 @@
                     <div class="right">
                         <a href="{% url 'like-blog' blog.id %}" style="text-decoration: none;">
                             {% if request.user.profile in blog.like.all %}
-                            <i class="fa-solid fa-circle-check"></i> {{ blog.like.count }} Boostups
+                            <i class="fa-solid fa-thumbs-up"></i> {{ blog.like.count }} Boostups
                             {% else %}
-                            <i class="fa-regular fa-circle-check"></i> {{ blog.like.count }} Boostups
+                            <i class="fa-regular fa-thumbs-up"></i> {{ blog.like.count }} Boostups
                             {% endif %}
                         </a>
                     </div>
