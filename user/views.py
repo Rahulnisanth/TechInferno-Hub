@@ -18,9 +18,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(
-                request, f"Welcome {username}, You've logged in successfully!"
-            )
+            messages.success(request, f"Welcome to the Hub {username}!")
             return redirect("/")
         else:
             messages.error(request, "Invalid username or password, Please try again!")
@@ -31,7 +29,7 @@ def login_user(request):
 @login_required(login_url="login_user")
 def logout_user(request):
     logout(request)
-    messages.info(request, "Your account has logged-out successfully!")
+    messages.info(request, "Your account has been logged-out!")
     return redirect("/")
 
 
@@ -45,7 +43,7 @@ def registerUser(request):
             user.save()
             messages.success(
                 request,
-                f"Hello {user.username}!,Your account has been registered successfully!",
+                f"Hello {user.username}!,Your account registration successfully!",
             )
             login(request, user)
             return redirect("user-profile")
@@ -86,7 +84,7 @@ def editProfile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your Profile has been updated successfully")
+            messages.success(request, "Your Profile has been updated!")
             return redirect("user-profile")
     context = {"form": form}
     return render(request, "profile_form.html", context)
@@ -102,7 +100,7 @@ def addSkill(request):
             skill = form.save(commit=False)
             skill.owner = profile
             skill.save()
-            messages.success(request, "New Skill has been added successfully")
+            messages.success(request, "Skill added!")
             return redirect("user-profile")
     context = {"form": form}
     return render(request, "skill_form.html", context)
@@ -117,7 +115,7 @@ def editSkill(request, pk):
         form = SkillForm(request.POST, instance=skill)
         if form.is_valid():
             form.save()
-            messages.success(request, f"Successfully edited {skill.name}")
+            messages.success(request, f"Successfully updated {skill.name}")
             return redirect("user-profile")
     context = {"form": form}
     return render(request, "skill_form.html", context)
@@ -173,9 +171,7 @@ def messageForm(request, pk):
             if sender:
                 text.name = sender.username
             text.save()
-            messages.success(
-                request, f"Message has been sent to {receiver} successfully"
-            )
+            messages.success(request, f"Message sent to {receiver} successfully")
             return redirect("single-profile", pk=receiver.id)
 
     context = {"form": form, "profile": receiver}

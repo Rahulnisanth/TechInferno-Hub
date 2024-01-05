@@ -102,9 +102,9 @@
                     <p class="project--rating">
                       <a href="{% url 'add-like' project.id %}">
                         {% if user.profile in project.like.all %}
-                        <i class="fa-solid fa-circle-check"></i>{{project.like.count}} Endorsements
+                        <i class="fa-solid fa-thumbs-up"></i>{{project.like.count}} Endorsements
                         {% else %}
-                        <i class="fa-regular fa-circle-check"></i>{{project.like.count}} Endorsements
+                        <i class="fa-regular fa-thumbs-up"></i>{{project.like.count}} Endorsements
                         {% endif %}
                       </a>
                     </p>

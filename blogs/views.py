@@ -74,7 +74,7 @@ def deleteBlog(request, pk):
     blog = profile.blog_set.get(id=pk)
     if request.method == "POST":
         blog.delete()
-        messages.error(request, "Your blog was deleted Successfully!")
+        messages.error(request, "Blog was deleted Successfully!")
         return redirect("blogs")
     context = {"blog": blog}
     return render(request, "delete-blog.html", context)

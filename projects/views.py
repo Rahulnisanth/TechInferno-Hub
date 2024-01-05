@@ -53,7 +53,7 @@ def singleProject(request, pk):
             review.owner = request.user.profile
             review.project = projectObj
             review.save()
-            messages.success(request, "Your Review was Submitted Successfully!")
+            messages.success(request, "Review was Submitted Successfully!")
             return redirect("single-project", pk=projectObj.id)
 
     context = {"project": projectObj, "form": form}
@@ -87,6 +87,7 @@ def createProject(request):
             for tag in newtags:
                 tag, created = Tag.objects.get_or_create(name=tag)
                 project.tags.add(tag)
+            messages.success("Project has been added successfully!")
             return redirect("projects")
     context = {"form": project_form}
     return render(request, "project_form.html", context)
@@ -96,7 +97,7 @@ def createProject(request):
 def download_documentation(request, pk):
     project = get_object_or_404(Project, id=pk)
     file_path = project.project_documentation.path
-    messages.success(request, "The Documentation-file was downloaded successfully!")
+    messages.success(request, "Documentation was downloaded successfully!")
     return FileResponse(open(file_path, "rb"), as_attachment=True)
 
 
@@ -113,7 +114,7 @@ def updateProject(request, pk):
             for tag in newtags:
                 tag, created = Tag.objects.get_or_create(name=tag)
                 project.tags.add(tag)
-            messages.success(request, "Your Project was updated Successfully!")
+            messages.success(request, "Project was updated Successfully!")
             return redirect("projects")
     context = {"form": project_form, "project": project}
     return render(request, "project_form.html", context)
@@ -126,7 +127,7 @@ def deleteProject(request, pk):
     project_form = ProjectForm(instance=project)
     if request.method == "POST":
         project.delete()
-        messages.error(request, "Your Project was deleted Successfully!")
+        messages.error(request, "Project was deleted Successfully!")
         return redirect("projects")
     context = {"object": project}
     return render(request, "delete-project.html", context)
@@ -136,10 +137,10 @@ def deleteProject(request, pk):
 def addFavorite(request, pk):
     project = get_object_or_404(Project, id=pk)
     if project.favorite.filter(id=request.user.id).exists():
-        messages.error(request, "The project was successfully removed from favorites!")
+        messages.error(request, "Project was successfully removed from bookmarks!")
         project.favorite.remove(request.user)
     else:
-        messages.success(request, "The project was successfully added to favorites!")
+        messages.success(request, "Project was successfully added to bookmarks!")
         project.favorite.add(request.user)
     return redirect("projects")
 
