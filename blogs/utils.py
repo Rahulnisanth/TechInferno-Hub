@@ -32,7 +32,7 @@ def SearchBlogs(request):
     if request.GET.get("search_query"):
         search_query = request.GET.get("search_query")
         search_words = search_query.split()
-        for word in search_query:
+        for word in search_words:
             blogs = Blog.objects.distinct().filter(
                 Q(title__icontains=word) | Q(owner__username__icontains=word)
             )

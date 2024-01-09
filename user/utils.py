@@ -33,7 +33,8 @@ def SearchProfiles(request):
     if request.GET.get("search_query"):
         search_query = request.GET.get("search_query")
         search_words = search_query.split()
-        for word in search_query:
+        for word in search_words:
+            skills = []
             skills.extend(Skill.objects.filter(name__icontains=word))
             profiles = Profile.objects.distinct().filter(
                 Q(username__icontains=word)
@@ -42,5 +43,7 @@ def SearchProfiles(request):
             )
     else:
         search_words = []
+
     search_query = " ".join(search_words)
+
     return profiles, search_query
