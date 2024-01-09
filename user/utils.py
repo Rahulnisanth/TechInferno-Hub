@@ -32,7 +32,8 @@ def SearchProfiles(request):
     profiles = Profile.objects.all()
     origin = request.GET.get("search_query")
     if request.GET.get("search_query"):
-        search_query = request.GET.get("search_query").split()
+        search_query = request.GET.get("search_query")
+        search_words = search_query.split()
         for word in search_query:
             skills.extend(Skill.objects.filter(name__icontains=word))
             profiles = Profile.objects.distinct().filter(
@@ -41,4 +42,7 @@ def SearchProfiles(request):
                 | Q(short_intro__icontains=word)
                 | Q(skill__in=[skill for skill in skills])
             )
+    else:
+        search_words = []
+    search_query = " ".join(search_words)
     return (profiles, search_query)

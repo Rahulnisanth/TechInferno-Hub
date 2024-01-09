@@ -30,9 +30,13 @@ def SearchBlogs(request):
     blogs = []
     blogs = Blog.objects.all()
     if request.GET.get("search_query"):
-        search_query = request.GET.get("search_query").split()
+        search_query = request.GET.get("search_query")
+        search_words = search_query.split()
         for word in search_query:
             blogs = Blog.objects.distinct().filter(
                 Q(title__icontains=word) | Q(owner__username__icontains=word)
             )
+    else:
+        search_words = []
+    search_query = " ".join(search_words)
     return blogs, search_query

@@ -30,9 +30,14 @@ def SearchProjects(request):
     projects = []
     tags = []
     projects = Project.objects.all()
+
     if request.GET.get("search_query"):
-        search_query = request.GET.get("search_query").split()
-        for word in search_query:
+        search_query = request.GET.get("search_query")
+        search_words = search_query.split()
+
+        for word in search_words:
+            # Reset tags for each iteration
+            tags = []
             tags.extend(Tag.objects.filter(name__icontains=word))
             projects = Project.objects.distinct().filter(
                 Q(title__icontains=word)
@@ -41,4 +46,8 @@ def SearchProjects(request):
                 | Q(owner__username__icontains=word)
                 | Q(tags__in=[tag for tag in tags])
             )
+    else:
+        search_words = []
+
+    search_query = " ".join(search_words)
     return projects, search_query
