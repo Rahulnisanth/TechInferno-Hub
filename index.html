@@ -41,6 +41,7 @@
   <!-- END FOR OTHER-PAGE CONTENTS -->
 
   <!-- BACK-TO-TOP BUTTON -->
+  <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
     <i class="fa-solid fa-arrow-up"></i>
   </a>
@@ -50,24 +51,8 @@
 
 <script src="{% static 'uikit/app.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/loader.js' %}"></script>
+<script src="{% static 'js/backtotop.js' %}"></script>
 <script src="{% static 'js/fileInput.js' %}"></script>
-<script>
-  /**
- * Back to top button
- */
-  let backtotop = document.querySelector(".back-to-top");
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      // console.log(window.scrollY);
-      if (window.scrollY > 100) {
-        backtotop.classList.add("active");
-      } else {
-        backtotop.classList.remove("active");
-      }
-    };
-    window.addEventListener("load", toggleBacktotop);
-    window.addEventListener("scroll", toggleBacktotop);
-  }
-</script>
 
 </html>
