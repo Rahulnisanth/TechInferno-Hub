@@ -628,21 +628,23 @@ img {
   margin-bottom: 4rem;
 }
 
-.singleProject__liveLink {
+.project__links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--color-main);
+}
+
+.project__links a {
+  text-decoration: none;
+  font-size: 2.4rem;
   font-weight: 500;
   transition: all 0.3s ease-in-out;
-  border-bottom: 2px solid transparent;
 }
 
-.singleProject__liveLink:hover {
-  font-weight: 500;
-  border-bottom: 2px solid var(--color-main);
-}
-
-.singleProject__liveLink i {
-  display: inline-block;
-  font-size: 1.6rem;
-  margin-right: 1rem;
+.project__links a:hover {
+  color: var(--color-sub);
 }
 
 .image--preview {

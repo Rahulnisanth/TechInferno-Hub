@@ -1,5 +1,4 @@
 {% extends 'index.html' %}
-
 {% block content %}
 <!-- Main Section -->
 <main class="singleProject my-md">
@@ -14,18 +13,16 @@
           </span>
           {% endfor %}
         </div>
-
-        {% if project.source_link %}
-        <a class="singleProject__liveLink" href="{{project.source_link}}" target="_blank"><i
-            class="fa-solid fa-code-branch"></i>GitRepos
-        </a>
-        {% endif %}
-        <br />
-        {% if project.demo_link %}
-        <a class="singleProject__liveLink" href="{{project.demo_link}}" target="_blank"><i
-            class="fa-solid fa-square-arrow-up-right"></i>Live Demo
-        </a>
-        {% endif %}
+        <!-- PROJECT lINKS -->
+        <div class="project__links">
+          {% if project.source_link %}
+          <a href="{{project.source_link}}"><i class="fa-brands fa-github"></i></a>
+          {% endif %}
+          <br />
+          {% if project.demo_link %}
+          <a href="{{project.demo_link}}"><i class="fa-solid fa-earth-americas"></i></a>
+          {% endif %}
+        </div>
 
       </div>
       <div class="column column--2of3">

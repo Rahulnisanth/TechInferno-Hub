@@ -17,11 +17,11 @@
                             {{blog.owner}}</a>
                     </div>
                     <div class="right">
-                        <a href="{% url 'like-blog' blog.id %}" style="text-decoration: none;">
+                        <a href="{% url 'like-blog' blog.id %}" style="text-decoration: none; margin-right: 1rem;">
                             {% if request.user.profile in blog.like.all %}
-                            <i class="fa-solid fa-thumbs-up"></i> {{ blog.like.count }} Boostups
+                            <i class="fa-solid fa-thumbs-up"></i> {{ blog.like.count }}
                             {% else %}
-                            <i class="fa-regular fa-thumbs-up"></i> {{ blog.like.count }} Boostups
+                            <i class="fa-regular fa-thumbs-up"></i> {{ blog.like.count }}
                             {% endif %}
                         </a>
                     </div>
