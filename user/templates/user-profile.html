@@ -141,8 +141,7 @@
                               {% for blog in profile.blog_set.all %}
                               <tr>
                                     <td class="settings__thumbnail">
-                                          <a href="{% url 'single-blog' blog.id %}"><img
-                                                      src="{{blog.featured_image.url}}" /></a>
+                                          <a href="{% url 'single-blog' blog.id %}"><img src="{{blog.ImageURL}}" /></a>
                                     </td>
                                     <td class="settings__tableInfo">
                                           <a href="{% url 'single-blog' blog.id %}">{{blog.title}}</a>

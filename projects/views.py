@@ -87,7 +87,7 @@ def createProject(request):
             for tag in newtags:
                 tag, created = Tag.objects.get_or_create(name=tag)
                 project.tags.add(tag)
-            messages.success("Project has been added successfully!")
+            messages.success(request, "Project has been added successfully!")
             return redirect("projects")
     context = {"form": project_form}
     return render(request, "project_form.html", context)

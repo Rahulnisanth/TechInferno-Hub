@@ -42,7 +42,7 @@ def createBlog(request):
     profile = request.user.profile
     blog_form = BlogForm(instance=profile)
     if request.method == "POST":
-        blog_form = BlogForm(request.POST)
+        blog_form = BlogForm(request.POST, request.FILES)
         if blog_form.is_valid():
             blog = blog_form.save(commit=False)
             blog.owner = profile
