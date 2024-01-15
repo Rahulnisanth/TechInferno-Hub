@@ -19,7 +19,6 @@
                         <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
                         {% if request.user.is_authenticated %}
                         <li class="header__menuItem"><a href="{% url 'user-profile' %}">My Profile</a></li>
-
                         <li class="header__menuItem"><a href="{% url 'logout_user' %}" class="btn btn--sub">Logout</a>
                         </li>
                         {% else %}
