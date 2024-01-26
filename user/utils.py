@@ -27,23 +27,30 @@ def paginateProfiles(request, profiles, results):
 
 def SearchProfiles(request):
     search_query = ""
-    profiles = []
-    skills = []
     profiles = Profile.objects.all()
+    skills = []
+
     if request.GET.get("search_query"):
         search_query = request.GET.get("search_query")
         search_words = search_query.split()
+        
+        filters = []
+
         for word in search_words:
             skills = []
             skills.extend(Skill.objects.filter(name__icontains=word))
-            profiles = Profile.objects.distinct().filter(
+
+            filters.append(
                 Q(username__icontains=word)
                 | Q(job_role__icontains=word)
                 | Q(skill__in=[skill for skill in skills])
             )
+
+        profiles = Profile.objects.distinct().filter(*filters)
     else:
         search_words = []
 
     search_query = " ".join(search_words)
 
     return profiles, search_query
+
