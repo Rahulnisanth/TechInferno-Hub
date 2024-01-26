@@ -15,7 +15,7 @@ class Project(models.Model):
     video = models.FileField(upload_to="videos/", blank=True, null=True)
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)
-    completed_date = models.DateTimeField(null=True, blank=True)
+    completed_date = models.DateField(null=True, blank=True)
     favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     like = models.ManyToManyField(Profile, related_name="like_count")
     tags = models.ManyToManyField("Tag", blank=True)

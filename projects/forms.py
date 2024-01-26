@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import DateInput, ModelForm
 from .models import *
 
 
@@ -20,6 +20,9 @@ class ProjectForm(ModelForm):
             "source_link",
             "video",
         ]
+        widgets = {
+            "completed_date": DateInput(attrs={"type": "date"}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)

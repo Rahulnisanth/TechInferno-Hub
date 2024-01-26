@@ -43,6 +43,7 @@ def SearchProfiles(request):
             filters.append(
                 Q(username__icontains=word)
                 | Q(job_role__icontains=word)
+                | Q(location__icontains=word)
                 | Q(skill__in=[skill for skill in skills])
             )
 
