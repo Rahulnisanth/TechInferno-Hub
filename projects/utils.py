@@ -25,29 +25,44 @@ def paginateProjects(request, projects, results):
     return (custom_range, projects)
 
 
+
 def SearchProjects(request):
     search_query = ""
-    projects = []
-    tags = []
     projects = Project.objects.all()
+    tags = []
 
     if request.GET.get("search_query"):
         search_query = request.GET.get("search_query")
         search_words = search_query.split()
+        print("The user Entered Value is =====> ", search_words)
+
+        filters = []
 
         for word in search_words:
-            # Reset tags for each iteration
             tags = []
             tags.extend(Tag.objects.filter(name__icontains=word))
-            projects = Project.objects.distinct().filter(
-                Q(title__icontains=word)
-                | Q(domain__icontains=word)
-                | Q(description__icontains=word)
-                | Q(owner__username__icontains=word)
-                | Q(tags__in=[tag for tag in tags])
-            )
+            try:
+                year = int(word)
+                filters.append(
+                    Q(title__icontains=word)
+                    | Q(domain__icontains=word)
+                    | Q(owner__username__icontains=word)
+                    | Q(completed_date__year=year)
+                    | Q(tags__in=[tag for tag in tags])
+                )
+            except ValueError:
+                filters.append(
+                    Q(title__icontains=word)
+                    | Q(domain__icontains=word)
+                    | Q(owner__username__icontains=word)
+                    | Q(tags__in=[tag for tag in tags])
+                )
+        print(filters)
+        projects = Project.objects.distinct().filter(*filters)
+        print(projects)
     else:
         search_words = []
 
     search_query = " ".join(search_words)
     return projects, search_query
+

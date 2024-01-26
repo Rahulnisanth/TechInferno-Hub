@@ -25,18 +25,31 @@ def paginateBlogs(request, blogs, results):
     return (custom_range, blogs)
 
 
+
+
 def SearchBlogs(request):
     search_query = ""
-    blogs = []
     blogs = Blog.objects.all()
+
     if request.GET.get("search_query"):
         search_query = request.GET.get("search_query")
         search_words = search_query.split()
+        print(search_words)
+
+        # Create a list to accumulate filters
+        filters = []
+
         for word in search_words:
-            blogs = Blog.objects.distinct().filter(
-                Q(title__icontains=word) | Q(owner__username__icontains=word)
-            )
+            try:
+                year = int(word)
+                filters.append(Q(created__year=year))
+            except ValueError:
+                filters.append(Q(title__icontains=word) | Q(owner__username__icontains=word))
+
+        blogs = Blog.objects.distinct().filter(*filters)
     else:
         search_words = []
+
     search_query = " ".join(search_words)
     return blogs, search_query
+

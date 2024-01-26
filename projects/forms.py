@@ -15,6 +15,7 @@ class ProjectForm(ModelForm):
             "domain",
             "title",
             "description",
+            "completed_date",
             "demo_link",
             "source_link",
             "video",
