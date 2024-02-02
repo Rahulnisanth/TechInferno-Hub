@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
 <!-- Main Section -->
+<style>
+      h5 {
+            margin-top: -0.5rem;
+      }
+</style>
 <main class="home">
       <section class="hero-section text-center">
             <div class="container container--narrow">
@@ -41,6 +46,7 @@
                                                 <div class="dev__meta">
                                                       <h3>{{profile.username}}</h3>
                                                       <h5>{{profile.job_role}}</h5>
+                                                      <h5>Batch - {{profile.academic_year}}</h5>
                                                 </div>
                                           </div>
 

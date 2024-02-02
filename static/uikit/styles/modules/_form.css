@@ -40,6 +40,7 @@ input.input[type='text'],
 input.input[type='email'],
 input.input[type='password'],
 input.input[type='number'],
+input.input[type='date'],
 textarea.input {
   min-width: 24rem;
   width: 100%;
@@ -58,6 +59,7 @@ input.input[type='text']:active,
 input.input[type='email']:active,
 input.input[type='password']:active,
 input.input[type='number']:active,
+input.input[type='date']:active,
 select.input,
 textarea.input:focus,
 textarea.input:active {
