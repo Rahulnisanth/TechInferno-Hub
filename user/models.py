@@ -11,6 +11,7 @@ class Profile(models.Model):
         default="static/images/default__profile.png",
         upload_to="profile__picture/",
     )
+    academic_year = models.IntegerField(default=0, null=True, blank=True)
     username = models.CharField(max_length=200, null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
     job_role = models.CharField(max_length=200, null=True, blank=True)

@@ -35,6 +35,7 @@ class ProfileForm(ModelForm):
         fields = [
             "profile_picture",
             "username",
+            "academic_year",
             "email",
             "location",
             "job_role",
