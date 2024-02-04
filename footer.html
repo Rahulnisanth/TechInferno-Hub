@@ -1,0 +1,62 @@
+{% load static %}
+{% block content %}
+
+<style>
+    #footer {
+        position: relative;
+        bottom: 0%;
+        margin-bottom: -1rem;
+        text-align: center;
+        width: 100%;
+        background-color: white;
+    }
+
+    .footer-bottom {
+        padding: 2rem 0 1rem 0;
+    }
+
+    .footer-icons {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 1rem;
+    }
+</style>
+
+<footer id="footer">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; Copyright <strong>TechInferno Hub</strong>. All Rights Reserved</p>
+                <p>Developed by <a
+                        href="https://www.linkedin.com/in/rahul-nisanth-muthu-kumar-9b117b277//">QuantumQuotientz</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-icons">
+        <!-- Rahul -->
+        <a href="https://www.linkedin.com/in/rahul-nisanth-muthu-kumar-9b117b277/">
+            <img style="height: 4rem;width: 4rem;" class="avatar avatar__md" src="{% static 'images/rahul-icon.jpg' %}"
+                alt="user" />
+        </a>
+        <!-- Kanika -->
+        <a href="https://www.linkedin.com/in/kanika-n-675146277/">
+            <img style="height: 4rem;width: 4rem;" class="avatar avatar__md" src="{% static 'images/kanika-icon.jpg' %}"
+                alt="user" />
+        </a>
+        <!-- Kishore -->
+        <a href="https://www.linkedin.com/in/kishore-v-687148277/">
+            <img style="height: 4rem;width: 4rem;" class="avatar avatar__md"
+                src="{% static 'images/kishore-icon.jpeg' %}" alt="user" />
+        </a>
+        <!-- Prashanth -->
+        <a href="#">
+            <img style="height: 4rem;width: 4rem;" class="avatar avatar__md" src="{% static 'images/rahul-icon.jpg' %}"
+                alt="user" />
+        </a>
+    </div>
+</footer>
+
+{% endblock content %}

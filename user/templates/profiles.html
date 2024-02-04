@@ -6,6 +6,11 @@
       h5 {
             margin-top: -0.5rem;
       }
+
+      /* FOOTER ALTER MARGIN */
+      .devlist {
+            margin: 5rem 0 4.9rem 0;
+      }
 </style>
 <main class="home">
       <section class="hero-section text-center">
@@ -68,5 +73,6 @@
             </div>
       </section>
       {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
+      {% include 'footer.html' %}
 </main>
 {% endblock content %}
