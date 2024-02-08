@@ -26,7 +26,7 @@ At TechInferno, we believe in the power of ideas and the impact they can have on
 Here's what you can look forward to:
 1. Explore Innovative Projects: Dive into a curated collection of remarkable projects spanning various industries and technologies. From AI and robotics to sustainable energy solutions, our platform is a hub for the latest and greatest innovations.
 2. Showcase Your TechWorks: Are you working on a groundbreaking project? We invite you to share your techWorks with our community. Be a part of the conversation, get feedback, and connect with like-minded individuals who share your passion for pushing the boundaries of what's possible.
-3. Personalized Experience: Tailor your [Your Website Name] experience to your interests. Our platform is designed to understand your preferences, ensuring you receive content and recommendations that align with your tech interests.
+3. Personalized Experience: Tailor your Hub experience to your interests. Our platform is designed to understand your preferences, ensuring you receive content and recommendations that align with your tech interests.
 
 To get started:
 - Create Your Profile: Complete your profile to connect with fellow innovators and enthusiasts.
@@ -37,7 +37,7 @@ We're on a mission to create a collaborative space that fosters creativity, lear
 
 
 Best Regards,
-@The Team TechInferno """
+@Team QuantumQuotientz """
 
         send_mail(
             subject,
