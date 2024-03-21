@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-5nh18k^(xtbh6shf_5ut-@(@ngcga=ws4e9025x$*m7g^7rlg)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.186.55", "localhost"]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -135,6 +135,18 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# MONGO-DB :
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'TechInfernoHub_DB',  # Database name
+#         'CLIENT': {
+#             'host': 'localhost',  # MongoDB host
+#             'port': 27017,  # MongoDB port
+#         }
+#     }
+# }
 
 # POSTGRESQL TERMS ---->
 # DATABASES = {
