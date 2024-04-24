@@ -6,3 +6,9 @@ media
 */__pycache__
 */migrations
 */__init__.py
+
+/.vscode
+/.pytest_cache
+/API
+/media
+/static/uikit/*

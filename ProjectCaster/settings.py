@@ -136,17 +136,6 @@ DATABASES = {
     }
 }
 
-# MONGO-DB :
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'TechInfernoHub_DB',  # Database name
-#         'CLIENT': {
-#             'host': 'localhost',  # MongoDB host
-#             'port': 27017,  # MongoDB port
-#         }
-#     }
-# }
 
 # POSTGRESQL TERMS ---->
 # DATABASES = {
@@ -159,7 +148,6 @@ DATABASES = {
 #         'PORT':'5432',
 #     }
 # }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
