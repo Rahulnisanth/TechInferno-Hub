@@ -43,7 +43,8 @@
                                                 {{blog.owner}}</a>
                                         </div>
                                     </div>
-                                    <p>{{blog.description | slice:"115"}} . . .</p>
+                                    <p>{{blog.description | slice:"100"}} . . .<span class="card__span"> see more</span>
+                                    </p>
                                     <div style="padding: 1rem 0 1rem 0;" class="created">
                                         <span style="color: var(--color-main); font-size: small;">
                                             <small>{{blog.created}}</small>
@@ -58,7 +59,6 @@
             </div>
         </div>
         {% include 'pagination.html' with queryset=blogs custom_range=custom_range %}
-        {% include 'footer.html' %}
     </section>
 </main>
 {% endblock content %}
