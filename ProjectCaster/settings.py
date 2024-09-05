@@ -136,7 +136,6 @@ DATABASES = {
     }
 }
 
-
 # POSTGRESQL TERMS ---->
 # DATABASES = {
 #     'default': {
