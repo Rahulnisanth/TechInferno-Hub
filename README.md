@@ -9,8 +9,6 @@ Tags: CSS, Django, HTML, JS, SQL
 
 **TechInferno Hub** is a dynamic platform designed for individuals to showcase their projects and technical work, enhancing their profiles and sharing their achievements with a broader audience. This platform caters to developers, designers, researchers, and anyone passionate about technology and innovation, providing a space to highlight their accomplishments and connect with like-minded professionals.
 
----
-
 ## Features
 
 - **User Profiles:**
@@ -34,8 +32,6 @@ Tags: CSS, Django, HTML, JS, SQL
 - **User Authentication:**
   - Secure login and registration system.
   - Protects user data and ensures privacy.
-
----
 
 ## Usage
 
@@ -66,5 +62,3 @@ Tags: CSS, Django, HTML, JS, SQL
 1. **Showcase Your Work:**
    - Share your projects and achievements.
    - Engage with the community to gain recognition and enhance your profile.
-
----
